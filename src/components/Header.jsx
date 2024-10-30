@@ -3,9 +3,15 @@ import "./Header.scss";
 const Header = () => {
   return (
     <header className="unlogged-header">
-      <nav>
+      <div className="content">
         <img src="/src/assets/images/logo.png" alt="logo do projeto" />
-      </nav>
+        <nav>
+          <a href=""></a>
+        </nav>
+        <div className="action">
+          <a href="" className="button">Entrar <i className="fi fi-rr-arrow-small-right"></i></a>
+        </div>
+      </div>
     </header>
   );
 };
