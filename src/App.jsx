@@ -1,9 +1,9 @@
-import "./App.scss";
+import Header from "./components/Header.jsx";
 
 function App() {
   return (
     <div className="content">
-      <h1 className="hello-scss">Hello World</h1>
+      <Header />
     </div>
   );
 }
