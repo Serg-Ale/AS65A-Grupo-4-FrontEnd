@@ -6,7 +6,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "./src/assets/styles/variables.scss" as *;`, // Importa todas as variáveis e funções
+        additionalData: `@use "./src/assets/styles/defaults.scss" as *;`, // Importa todas as variáveis e funções
       },
     },
   },

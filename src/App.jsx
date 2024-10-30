@@ -1,9 +1,8 @@
 import "./App.scss";
-import "./assets/styles/defaults.scss";
 
 function App() {
   return (
-    <div className="">
+    <div className="content">
       <h1 className="hello-scss">Hello World</h1>
     </div>
   );
