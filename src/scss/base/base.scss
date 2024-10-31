@@ -1,16 +1,13 @@
 @use "sass:color";
 
+// Função para converter uma cor para RGB
 @function toRGB($color) {
-  @return color.red($color) + ", " + color.green($color) + ", " +
-    color.blue($color);
+  @return color.channel($color, "red", $space: rgb) + ", " +
+    color.channel($color, "green", $space: rgb) + ", " +
+    color.channel($color, "blue", $space: rgb);
 }
 
-// @import url("https://fonts.googleapis.com/css1?family=Roboto:wght@400;700&display=swap");
-
-// body {
-//   font-family: "Roboto", sans-serif;
-// }
-
+// Mapa de cores
 $colors: (
   primary: #e34e19,
   secondary: #45187f,
@@ -23,13 +20,15 @@ $colors: (
   white: #fff,
 );
 
+// Gerando variáveis CSS dinamicamente com o mapa $colors
 :root {
   @each $name, $color in $colors {
-    --#{$name}: #{$color};
-    --#{$name}-rgb: #{toRGB($color)};
+    --#{"#{$name}"}: #{$color}; // Corrige o warning de interpolação
+    --#{"#{$name}-rgb"}: #{toRGB($color)}; // Corrige o warning de interpolação
   }
 }
 
+// Outras estilizações
 * {
   box-sizing: border-box;
 }

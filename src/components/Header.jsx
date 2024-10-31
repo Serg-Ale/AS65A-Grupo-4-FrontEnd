@@ -1,5 +1,3 @@
-import "./Header.scss";
-
 const Header = () => {
   return (
     <header className="unlogged-header">
@@ -9,7 +7,9 @@ const Header = () => {
           <a href=""></a>
         </nav>
         <div className="action">
-          <a href="" className="button">Entrar <i className="fi fi-rr-arrow-small-right"></i></a>
+          <a href="" className="button">
+            Entrar <i className="fi fi-rr-arrow-small-right"></i>
+          </a>
         </div>
       </div>
     </header>
