@@ -30,12 +30,15 @@ $colors: (
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .content {
   width: 100%;
   max-width: 1450px;
   margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0 20px;
 
   &.min {
     max-width: 1200px;
