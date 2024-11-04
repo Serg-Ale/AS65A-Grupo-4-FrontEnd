@@ -1,11 +1,14 @@
-import Header from "./components/Header.jsx";
+import Home from "./pages/Home.jsx";
 import "./scss/index.scss";
 
 function App() {
   return (
     <div>
-      <Header />
-    </div>
+
+      <Home />
+
+
+    </div> 
   );
 }
 
