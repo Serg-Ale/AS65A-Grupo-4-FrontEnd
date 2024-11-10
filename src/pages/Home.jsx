@@ -4,8 +4,7 @@ const Home = () => {
   return (
     <>
       <Header></Header>
-
-      <div className="login-modal">
+      <div className="login-modal" id="get-modal">
         <div className="box">
           <form action="">
             <h2>entrar</h2>

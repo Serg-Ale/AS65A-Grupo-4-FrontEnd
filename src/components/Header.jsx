@@ -33,7 +33,7 @@ const Header = () => {
             <a href="#contato">Contato</a>
           </nav>
           <div className="action">
-            <a href="" className="button alt">
+            <a href="#open-login" className="button alt">
               entrar <i className="fi fi-rr-arrow-small-right"></i>
             </a>
           </div>
