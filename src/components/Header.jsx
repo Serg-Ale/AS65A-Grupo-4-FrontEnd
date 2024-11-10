@@ -3,9 +3,9 @@ const Header = () => {
     <>
       <header className="unlogged-header">
         <div className="content">
-          <a href="#main-nav">
-            <i className="fi fi-rr-menu-burger" id="menu" src="" alt="" />
-          </a>
+          {/*<a href="#main-nav" id="#menu">
+            <i className="fi fi-rr-menu-burger" src="" alt="" />//todo: fix this
+          </a>*/}
           <img src="../../public/images/logo-white.png" alt="logo do projeto" />
           <nav>
             <a href="">Sobre nós</a>

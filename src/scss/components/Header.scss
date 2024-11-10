@@ -21,12 +21,11 @@ header {
       position: absolute;
       top: 10px;
       left: 10px;
-      font-size: 30px;
-      color: var(--white);
       display: none;
 
-      @media all and (max-width: 999px) {
-        display: block;
+      i {
+        font-size: 30px;
+        color: var(--white);
       }
     }
 
