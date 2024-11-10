@@ -1,10 +1,10 @@
+
 .login-modal {
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 0;
-    left: 0;
-    display: flex;
+    right: 0; 
+    display: none; //todo: create the js to acess the login button to open and close the modal
     justify-content: center;
     align-items: center;
     height: 100%;

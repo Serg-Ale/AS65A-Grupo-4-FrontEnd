@@ -4,6 +4,7 @@ const Home = () => {
   return (
     <>
       <Header></Header>
+
       <div className="login-modal">
         <div className="box">
           <form action="">
