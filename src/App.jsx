@@ -1,14 +1,11 @@
-import Home from "./pages/Home.jsx";
 import "./scss/index.scss";
+import AppRoutes from "./routes.jsx";
 
 function App() {
   return (
     <div>
-
-      <Home />
-
-
-    </div> 
+      <AppRoutes />
+    </div>
   );
 }
 
