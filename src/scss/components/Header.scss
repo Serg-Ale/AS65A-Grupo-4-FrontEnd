@@ -6,6 +6,23 @@ header {
   padding: 2rem;
   z-index: 100;
 
+  #menu {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: none;
+    text-decoration: none;
+
+    @media all and (max-width: 999px) {
+      display: block;
+    }
+
+    i {
+      font-size: 30px;
+      color: var(--white);
+    }
+  }
+
   .content {
     position: relative;
     display: flex;
@@ -15,18 +32,6 @@ header {
 
     @media all and (max-width: 999px) {
       justify-content: center;
-    }
-
-    #menu {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      display: none;
-
-      i {
-        font-size: 30px;
-        color: var(--white);
-      }
     }
 
     img {

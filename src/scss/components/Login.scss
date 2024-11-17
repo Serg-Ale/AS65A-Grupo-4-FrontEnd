@@ -4,7 +4,7 @@
     top: 0;
     bottom: 0;
     right: 0; 
-    display: none; //todo: create the js to acess the login button to open and close the modal
+    display: flex; //todo: change this to none or flex
     justify-content: center;
     align-items: center;
     height: 100%;
@@ -84,4 +84,12 @@
             }
         }
     }
+}
+
+.hide-login-modal {
+  display: none;
+}
+
+.show-login-modal {
+  display: flex;
 }

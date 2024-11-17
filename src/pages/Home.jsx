@@ -1,27 +1,55 @@
+import { useState, useRef, useEffect } from "react";
 import Header from "../components/Header.jsx";
 
 const Home = () => {
+  const [action, setAction] = useState(""); // Estado para gerenciar o modal
+  const modalRef = useRef(null); // Referência ao modal
+
+  // Lógica para fechar o modal ao clicar fora
+  const handleOutsideClick = (e) => {
+    if (modalRef.current && !modalRef.current.contains(e.target)) {
+      setAction(""); // Esconde o modal
+    }
+  };
+
+  useEffect(() => {
+    if (action === "login-modal") {
+      document.addEventListener("mousedown", handleOutsideClick); // Adiciona o evento
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick); // Remove o evento
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick); // Cleanup
+    };
+  }, [action]);
+
   return (
     <>
-      <Header></Header>
-      <div className="login-modal" id="get-modal">
-        <div className="box">
+      <Header setAction={setAction} />
+      <div
+        className={`login-modal ${
+          action === "login-modal" ? "show-login-modal" : "hide-login-modal"
+        }`}
+        id="get-modal"
+      >
+        <div className="box" ref={modalRef}>
           <form action="">
-            <h2>entrar</h2>
+            <h2>Entrar</h2>
             <div className="input-item">
-              <label>usuário:</label>
-              <input type="text" placeholder="digite seu nome..." />
+              <label>Usuário:</label>
+              <input type="text" placeholder="Digite seu nome..." />
             </div>
             <div className="input-item">
-              <label>senha:</label>
-              <input type="password" placeholder="digite sua senha..." />
+              <label>Senha:</label>
+              <input type="password" placeholder="Digite sua senha..." />
               <span>
-                para cadastrar, entre em contato com os <br /> coordenadores do
-                projeto <strong>bons fluidos</strong>
+                Para cadastrar, entre em contato com os <br /> coordenadores do
+                projeto <strong>Bons Fluidos</strong>.
               </span>
             </div>
             <div className="submit-area">
-              <button className="button submit">
+              <button className="button submit" type="button">
                 <img src="../../public/images/favicon-white.png" alt="" />
               </button>
             </div>
@@ -29,6 +57,7 @@ const Home = () => {
         </div>
       </div>
       <div className="hero">
+
         <img
           className="absolute-border"
           src="../../public/images/banner-border.png"
@@ -48,7 +77,7 @@ const Home = () => {
               tempus id nisl a.
             </p>
             <a href="" className="button alt">
-              ver mais <i className="fi fi-rr-arrow-small-right"></i>
+              Ver mais <i className="fi fi-rr-arrow-small-right"></i>
             </a>
           </div>
           <div className="image">
