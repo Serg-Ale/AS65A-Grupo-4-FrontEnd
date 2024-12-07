@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // Importando useNavigate
 
 const Modal = ({ action, setAction }) => {
   const modalRef = useRef(null);
@@ -9,6 +10,9 @@ const Modal = ({ action, setAction }) => {
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
+
+  // Usando o hook useNavigate para redirecionamento
+  const navigate = useNavigate();
 
   // Lógica para fechar o modal ao clicar fora
   const handleOutsideClick = (e) => {
@@ -47,6 +51,9 @@ const Modal = ({ action, setAction }) => {
 
       // Fecha o modal após login bem-sucedido
       setAction("");
+
+      // Redireciona para a página Dashboard
+      navigate("/dashboard");
     } catch (err) {
       // Exibe mensagem de erro caso as credenciais sejam inválidas
       setError(err.response?.data?.message || "Erro ao realizar o login.");
