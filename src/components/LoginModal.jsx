@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Importando useNavigate
+import {useNavigate} from "react-router-dom"; // Hook para navegação
+import {login} from "../api/auth"; // Importando a função de login
 
-const Modal = ({ action, setAction }) => {
+const LoginModal = ({action,setAction}) => {
   const modalRef = useRef(null);
 
   // Estados para gerenciar entrada de dados e erros
@@ -11,10 +11,8 @@ const Modal = ({ action, setAction }) => {
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
 
-  // Usando o hook useNavigate para redirecionamento
   const navigate = useNavigate();
 
-  // Lógica para fechar o modal ao clicar fora
   const handleOutsideClick = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
       setAction(""); // Esconde o modal
@@ -36,18 +34,13 @@ const Modal = ({ action, setAction }) => {
   // Função para lidar com o envio do formulário
   const handleLogin = async (e) => {
     e.preventDefault(); // Previne comportamento padrão do formulário
-    setError(""); // Limpa erros antes de tentar novamente
+    setError(""); // Limpa mensagens de erro
 
     try {
-      const response = await axios.post("http://localhost:3001/login", {
-        nome: usuario,
-        senha,
-      });
-
-      // Armazena o token recebido
-      const { token } = response.data;
+      const {token} = await login({nome: usuario,senha}); // Requisição via API
       console.log("Token recebido:", token);
       localStorage.setItem("token", token);
+      localStorage.setItem("usuario",usuario);
 
       // Fecha o modal após login bem-sucedido
       setAction("");
@@ -76,6 +69,7 @@ const Modal = ({ action, setAction }) => {
               placeholder="Digite seu nome..."
               value={usuario}
               onChange={(e) => setUsuario(e.target.value)}
+              required
             />
           </div>
           <div className="input-item">
@@ -85,6 +79,7 @@ const Modal = ({ action, setAction }) => {
               placeholder="Digite sua senha..."
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
+              required
             />
             <span>
               Para cadastrar, entre em contato com os <br />
@@ -103,9 +98,9 @@ const Modal = ({ action, setAction }) => {
   );
 };
 
-Modal.propTypes = {
+LoginModal.propTypes = {
   action: PropTypes.string.isRequired,
   setAction: PropTypes.func.isRequired,
 };
 
-export default Modal;
+export default LoginModal;

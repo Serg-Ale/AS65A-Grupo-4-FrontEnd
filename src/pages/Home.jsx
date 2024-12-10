@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "../components/Header.jsx";
-import Modal from "../components/Modal.jsx";
+import LoginModal from "../components/LoginModal.jsx";
 import Hero from "../components/Hero.jsx";
 
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <Header setAction={setAction} />
-      <Modal action={action} setAction={setAction} />
+      <LoginModal action={action} setAction={setAction} />
       <Hero />
     </>
   );
