@@ -1,5 +1,7 @@
 @use "sass:color";
 
+$main-radius: 40px;
+
 // Função para converter uma cor para RGB
 @function toRGB($color) {
   @return color.channel($color, "red", $space: rgb) + ", " +
@@ -9,8 +11,8 @@
 
 // Mapa de cores
 $colors: (
-  primary: #dc214c,
-  dark-primary: #7c1b30,
+  primary: rgb(187, 60, 90),
+  dark-primary: #9c243e,
   secondary: #f7a4ae,
   soft-secondary: #fde4e7,
   background: #f5f5f5,
@@ -46,7 +48,7 @@ body {
 
 .content {
   width: 100%;
-  max-width: 1450px;
+  max-width: 1670px;
   margin: 0 auto;
   padding: 0 20px;
 
