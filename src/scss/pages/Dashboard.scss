@@ -259,10 +259,10 @@ main.dashboard {
             color: var(--black);
           }
         }
-        
+
         .products-list {
           display: grid;
-          grid-template-columns: repeat(3,1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 2rem;
 
           .item {
@@ -410,7 +410,7 @@ main.dashboard {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                
+
                 i {
                   font-size: 48px;
                   color: var(--secondary);
@@ -486,12 +486,105 @@ main.dashboard {
 
                 &:hover {
                   background-color: var(--primary);
-                  
+
                   i {
                     color: var(--white);
                   }
                 }
               }
+            }
+          }
+        }
+
+        .order-list {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          gap: 2rem;
+
+          .item {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            background-color: rgba(255, 255, 255, 0.301);
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
+            .product {
+              width: 100%;
+
+              h3 {
+                color: rgb(70, 70, 70);
+                margin: 0;
+                font-size: 1.8rem;
+              }
+            }
+
+            .info {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              width: 100%;
+
+              .order-detail {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                gap: 0.5rem;
+                border-radius: 1rem;
+                color: var(--white);
+
+                span {
+                  font-size: 1.8rem;
+                  font-weight: 600;
+                }
+
+                strong {
+                  font-size: 3rem;
+                }
+              }
+
+              #order-in {
+                color: rgb(60, 187, 98);
+              }
+
+              #order-out {
+                color: var(--primary);
+              }
+            }
+
+            &.create {
+              justify-content: center;
+              text-align: center;
+              background-color: var(--secondary);
+              transition: all 300ms ease-in;
+              cursor: pointer;
+
+              h3 {
+                color: var(--primary);
+                margin: 0;
+                font-size: 2.4rem;
+                transition: all 300ms ease-in;
+              }
+
+              i {
+                display: inline-flex;
+                font-size: 80px;
+                color: var(--primary);
+                transition: all 300ms ease-in;
+              }
+
+              &:hover {
+                background-color: var(--primary);
+                h3, i {
+                  color: var(--white)
+                };
+              }
+
             }
           }
         }

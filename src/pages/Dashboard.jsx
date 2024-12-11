@@ -169,6 +169,7 @@ const Dashboard = () => {
             </div>
           </div> */}
 
+          {/* 
           <div id="administration" className="main-container">
             <div className="title">
               <h2>Controle de pessoal</h2>
@@ -186,7 +187,7 @@ const Dashboard = () => {
                       <span>*********</span>
                       <button>
                         <i id="eye-opened" className="fi fi-rr-eye"></i>
-                        {/* <i id="eye-closed" className="fi fi-rr-eye-crossed"></i> */}
+                         <i id="eye-closed" className="fi fi-rr-eye-crossed"></i> 
                       </button>
                     </div>
                   </div>
@@ -208,7 +209,6 @@ const Dashboard = () => {
                       <span>*********</span>
                       <button>
                         <i id="eye-opened" className="fi fi-rr-eye"></i>
-                        {/* <i id="eye-closed" className="fi fi-rr-eye-crossed"></i> */}
                       </button>
                     </div>
                   </div>
@@ -230,7 +230,6 @@ const Dashboard = () => {
                       <span>*********</span>
                       <button>
                         <i id="eye-opened" className="fi fi-rr-eye"></i>
-                        {/* <i id="eye-closed" className="fi fi-rr-eye-crossed"></i> */}
                       </button>
                     </div>
                   </div>
@@ -252,7 +251,6 @@ const Dashboard = () => {
                       <span>*********</span>
                       <button>
                         <i id="eye-opened" className="fi fi-rr-eye"></i>
-                        {/* <i id="eye-closed" className="fi fi-rr-eye-crossed"></i> */}
                       </button>
                     </div>
                   </div>
@@ -274,7 +272,6 @@ const Dashboard = () => {
                       <span>*********</span>
                       <button>
                         <i id="eye-opened" className="fi fi-rr-eye"></i>
-                        {/* <i id="eye-closed" className="fi fi-rr-eye-crossed"></i> */}
                       </button>
                     </div>
                   </div>
@@ -296,7 +293,6 @@ const Dashboard = () => {
                       <span>*********</span>
                       <button>
                         <i id="eye-opened" className="fi fi-rr-eye"></i>
-                        {/* <i id="eye-closed" className="fi fi-rr-eye-crossed"></i> */}
                       </button>
                     </div>
                   </div>
@@ -305,6 +301,139 @@ const Dashboard = () => {
                   <button>
                     <i className="fi fi-rr-pen-field"></i>
                   </button>
+                </div>
+              </div>
+            </div>
+          </div > 
+          */}
+          <div id="orders" className="main-container">
+            <div className="title">
+              <h2>Controle de Movimentaçao</h2>
+              <p>Acompanhe e crie saídas ou entradas do estoque.</p>
+            </div>
+            <div className="order-list">
+              <div className="item create">
+                <h3>Adicionar Movimentação</h3>
+                <i className="fi fi-rr-add"></i>
+              </div>
+              <div className="item">
+                <div className="product">
+                  <h3>Absorvente com o nome surpreendemente grande</h3>
+                </div>
+                <div className="info">
+                  <div id="order-in" className="order-detail">
+                    <span>+</span>
+                    <div className="value">
+                      <strong>22</strong>
+                    </div>
+                  </div>
+                  <div className="from-to">
+                    <p>Remetente/Destinatário</p>
+                    <strong className="name">Nome Completo</strong>
+                    <span>RUA 00, BAIRRO, CIDADE, 00000-000</span>
+                    <strong className="phone"></strong>
+                  </div>
+                  <div className="holder">
+                    <p>Responsável</p>
+                    <i className="fi fi-rr-circle-user"></i>
+                    <strong className="user">Nome Responsável</strong>
+                  </div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="product">
+                  <h3>Absorvente com o nome surpreendemente grande</h3>
+                </div>
+                <div className="info">
+                  <div id="order-out" className="order-detail">
+                    <span>-</span>
+                    <div className="value">
+                      <strong>22</strong>
+                    </div>
+                  </div>
+                  <div className="from-to">
+                    <p>Remetente/Destinatário</p>
+                    <strong className="name">Nome Completo</strong>
+                    <span>RUA 00, BAIRRO, CIDADE, 00000-000</span>
+                    <strong className="phone"></strong>
+                  </div>
+                  <div className="holder">
+                    <p>Responsável</p>
+                    <i className="fi fi-rr-circle-user"></i>
+                    <strong className="user">Nome Responsável</strong>
+                  </div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="product">
+                  <h3>Absorvente com o nome surpreendemente grande</h3>
+                </div>
+                <div className="info">
+                  <div id="order-in" className="order-detail">
+                    <span>+</span>
+                    <div className="value">
+                      <strong>22</strong>
+                    </div>
+                  </div>
+                  <div className="from-to">
+                    <p>Remetente/Destinatário</p>
+                    <strong className="name">Nome Completo</strong>
+                    <span>RUA 00, BAIRRO, CIDADE, 00000-000</span>
+                    <strong className="phone"></strong>
+                  </div>
+                  <div className="holder">
+                    <p>Responsável</p>
+                    <i className="fi fi-rr-circle-user"></i>
+                    <strong className="user">Nome Responsável</strong>
+                  </div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="product">
+                  <h3>Absorvente com o nome surpreendemente grande</h3>
+                </div>
+                <div className="info">
+                  <div id="order-out" className="order-detail">
+                    <span>-</span>
+                    <div className="value">
+                      <strong>22</strong>
+                    </div>
+                  </div>
+                  <div className="from-to">
+                    <p>Remetente/Destinatário</p>
+                    <strong className="name">Nome Completo</strong>
+                    <span>RUA 00, BAIRRO, CIDADE, 00000-000</span>
+                    <strong className="phone"></strong>
+                  </div>
+                  <div className="holder">
+                    <p>Responsável</p>
+                    <i className="fi fi-rr-circle-user"></i>
+                    <strong className="user">Nome Responsável</strong>
+                  </div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="product">
+                  <h3>Absorvente com o nome surpreendemente grande</h3>
+                </div>
+                <div className="info">
+                  <div id="order-in" className="order-detail">
+                    <span>+</span>
+                    <div className="value">
+                      <strong>22</strong>
+                    </div>
+                  </div>
+                  <div className="from-to">
+                    <p>Remetente/Destinatário</p>
+                    <strong className="name">Nome Completo</strong>
+                    <span>RUA 00, BAIRRO, CIDADE, 00000-000</span>
+                    <strong className="phone"></strong>
+                  </div>
+                  <div className="holder">
+                    <p>Responsável</p>
+                    <i className="fi fi-rr-circle-user"></i>
+                    <strong className="user">Nome Responsável</strong>
+                  </div>
                 </div>
               </div>
             </div>
