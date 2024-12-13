@@ -3,24 +3,24 @@ const OrderItem = () => {
     <div className="item">
       <div className="product">
         <h3>Absorvente com o nome surpreendemente grande</h3>
-      </div>
-      <div className="info">
-        <div id="order-in" className="order-detail">
-          <span>+</span>
+        <div id="order-in" className="item-counter">
           <div className="value">
             <strong>22</strong>
           </div>
         </div>
+      </div>
+      <div className="info">
         <div className="from-to">
-          <p>Remetente/Destinatário</p>
           <strong className="name">Nome Completo</strong>
+          <strong className="phone">(43) 9 9999-9999</strong>
           <span>RUA 00, BAIRRO, CIDADE, 00000-000</span>
-          <strong className="phone"></strong>
         </div>
         <div className="holder">
-          <p>Responsável</p>
-          <i className="fi fi-rr-circle-user"></i>
-          <strong className="user">Nome Responsável</strong>
+          <div className="label">
+            <i className="fi fi-rr-circle-user"></i>
+            <strong>Intermediário:</strong>
+          </div>
+          <strong className="name">Nome de Usuário</strong>
         </div>
       </div>
     </div>

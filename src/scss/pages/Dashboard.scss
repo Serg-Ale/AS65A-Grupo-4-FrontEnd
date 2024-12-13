@@ -534,7 +534,7 @@ main.dashboard {
 
         .order-list {
           display: grid;
-          grid-template-columns: repeat(1, 1fr);
+          grid-template-columns: repeat(2, 1fr);
           gap: 2rem;
 
           .item {
@@ -544,52 +544,111 @@ main.dashboard {
             justify-content: flex-start;
             align-items: center;
             gap: 1rem;
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 1rem;
             background-color: rgba(255, 255, 255, 0.301);
             box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 
             .product {
+              position: relative;
+              display: flex;
               width: 100%;
 
               h3 {
-                color: rgb(70, 70, 70);
+                color: var(--primary);
                 margin: 0;
                 font-size: 1.8rem;
+                padding-right: 3rem;
+              }
+
+              .item-counter {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                right: -2rem;
+                top: 0;
+                height: 60px;
+                width: 120px;
+                border-top-left-radius: 1rem;
+                border-bottom-left-radius: 1rem;
+                background-color: var(--primary);
+                color: var(--white);
+  
+                strong {
+                  font-weight: 900;
+                  font-size: 1.8rem;
+                  margin-right: 2rem;
+                }
+              }
+
+              #order-in {
+                background-color: rgb(60, 187, 98);
+
+              }
+
+              #order-out {
+                background-color: var(--primary);
               }
             }
 
             .info {
               display: flex;
-              justify-content: space-between;
-              align-items: center;
+              flex-direction: column;
+              gap: 1rem;
               width: 100%;
 
-              .order-detail {
+              .from-to {
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                gap: 0.5rem;
+                flex-direction: column;
+                background-color: var(--secondary);
+                padding: 1rem;
                 border-radius: 1rem;
                 color: var(--white);
+                flex: 1;
+
+                .name {
+                  margin-bottom: 6px;
+                  color: var(--primary);
+                }
 
                 span {
-                  font-size: 1.8rem;
+                  color: var(--primary);
+                  font-size: 0.8rem;
                   font-weight: 600;
-                }
-
-                strong {
-                  font-size: 3rem;
+                  line-break: anywhere;
+                  margin-top: 6px;
                 }
               }
 
-              #order-in {
-                color: rgb(60, 187, 98);
-              }
+              .holder {
+                display: flex;
+                  align-items: center;
+                  gap: 6px;
+                  padding: 10px;
+                  background-color: var(--primary);
+                  color: var(--secondary);
+                  border-radius: 30px;
 
-              #order-out {
-                color: var(--primary);
+
+                .label {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  gap: 6px;
+
+                  i {
+                    display: inline-flex;
+                    font-size: 1.2rem;
+                    color: var(--white);
+                  }
+                }
+
+                .name {
+                  color: var(--white);
+                  font-size: 1.2rem;
+                  font-weight: 400;
+                }
               }
             }
 
