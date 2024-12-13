@@ -143,6 +143,7 @@ main.dashboard {
     .content {
       display: flex;
       justify-content: space-between;
+      gap: 2rem;
       height: fit-content;
 
       aside {
@@ -152,6 +153,7 @@ main.dashboard {
         z-index: 2;
         width: 24%;
         padding: 2rem;
+        padding-right: 0;
         border-radius: 1rem;
         color: var(--white);
 
@@ -239,6 +241,7 @@ main.dashboard {
         height: 100%;
         width: 100%;
         padding: 2rem;
+        padding-left: 0;
 
         .title {
           width: 100%;
@@ -489,6 +492,39 @@ main.dashboard {
 
                   i {
                     color: var(--white);
+                  }
+                }
+              }
+            }
+
+            &.create {
+              background-color: var(--secondary);
+
+              .start {
+                .icon {
+                  i {
+                    color: var(--primary);
+                  }
+                }
+                .info {
+                  h3 {
+                    color: var(--white);
+                  }
+                }
+              }
+              .end {
+                button {
+                  background-color: var(--primary);
+                  
+                  i {
+                    color: var(--white);
+                  }
+
+                  &:hover {
+                    background-color: var(--white);
+                    i {
+                      color: var(--primary);
+                    }
                   }
                 }
               }
