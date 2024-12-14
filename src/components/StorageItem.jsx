@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 const StorageItem = ({nome,categoria,quantidade}) => {
   return (
     <button className="item">
@@ -17,6 +18,12 @@ const StorageItem = ({nome,categoria,quantidade}) => {
       </div>
     </button>
   );
+};
+
+StorageItem.propTypes = {
+  nome: PropTypes.string.isRequired,  // nome deve ser uma string e é obrigatório
+  categoria: PropTypes.string.isRequired,  // categoria deve ser uma string e é obrigatório
+  quantidade: PropTypes.number.isRequired,  // quantidade deve ser um número e é obrigatório
 };
 
 export default StorageItem;
