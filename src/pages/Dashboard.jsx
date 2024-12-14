@@ -25,7 +25,7 @@ const Dashboard = () => {
         return <Orders openModal={openModal} />;
       case "Administration":
       default:
-        return <Administration />;
+        return <Administration openModal={openModal} />;
     }
   };
 

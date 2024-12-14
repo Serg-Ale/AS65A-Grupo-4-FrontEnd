@@ -1,4 +1,3 @@
-// Order.jsx
 import {useEffect,useState} from "react";
 import PropTypes from "prop-types";
 import OrderItem from "./OrderItem.jsx";
