@@ -57,6 +57,7 @@ const Order = ({openModal}) => {
               quantidade={order.quantidade}
               participante={order.Participante}
               usuarioResponsavel={order.Usuario.nome}
+              openModal={openModal}
             />
           ))
         ) : (

@@ -60,6 +60,7 @@ const Administration = ({openModal}) => {
             <AdministrationItem
               key={admin.id_usuario}
               nome={admin.nome}
+              openModal={openModal}
             />
           ))
         ) : (
