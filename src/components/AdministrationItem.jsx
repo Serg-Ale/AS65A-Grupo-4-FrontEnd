@@ -1,4 +1,4 @@
-const AdministrationItem = () => {
+const AdministrationItem = ({nome}) => {
   return (
 
     <div className="item">
@@ -7,7 +7,7 @@ const AdministrationItem = () => {
           <i className="fi fi-rr-circle-user"></i>
         </div>
         <div className="info">
-          <h3>Padra Marcela Corsa</h3>
+          <h3>{nome}</h3>
           <div className="password">
             <span>*********</span>
             <button>
