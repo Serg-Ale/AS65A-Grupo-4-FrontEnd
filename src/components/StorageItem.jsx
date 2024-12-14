@@ -1,19 +1,19 @@
-const StorageItem = () => {
+const StorageItem = ({nome,categoria,quantidade}) => {
   return (
     <button className="item">
       <div className="item-counter">
-        <strong>45</strong>
+        <strong>{quantidade}</strong>
       </div>
       <div className="image">
         <img
           src="../../public/images/placeholder.png"
-          alt="bla bla bla"
+          alt={`Imagem do produto ${nome}`}
         />
       </div>
-      <h3>nome do produto</h3>
+      <h3>{nome}</h3>
       <div className="info">
         <span>Clique para modificar...</span>
-        <p>categoria</p>
+        <p>{categoria}</p>
       </div>
     </button>
   );
