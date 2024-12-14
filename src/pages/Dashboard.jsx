@@ -22,7 +22,7 @@ const Dashboard = () => {
       case "Storage":
         return <Storage openModal={openModal} />;
       case "Orders":
-        return <Orders />;
+        return <Orders openModal={openModal} />;
       case "Administration":
       default:
         return <Administration />;
