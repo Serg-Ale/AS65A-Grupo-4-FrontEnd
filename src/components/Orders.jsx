@@ -2,6 +2,7 @@ import {useEffect,useState} from "react";
 import PropTypes from "prop-types";
 import OrderItem from "./OrderItem.jsx";
 import {fetchData} from "../api/api.js";
+import AddOrderModal from './AddOrderModal.jsx';
 
 const Order = ({openModal}) => {
   const [orders,setOrders] = useState([]);
@@ -25,24 +26,7 @@ const Order = ({openModal}) => {
 
   const handleAddOrder = () => {
     openModal(
-      <div>
-        <h2>Adicionar Movimentação</h2>
-        <form>
-          <div className="input-group">
-            <label htmlFor="nome">Nome do Produto</label>
-            <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto" />
-          </div>
-          <div className="input-group">
-            <label htmlFor="categoria">Categoria</label>
-            <input type="text" id="categoria" name="categoria" placeholder="Digite a categoria" />
-          </div>
-          <div className="input-group">
-            <label htmlFor="quantidade">Quantidade</label>
-            <input type="number" id="quantidade" name="quantidade" placeholder="Digite a quantidade" />
-          </div>
-          <button type="submit">Salvar</button>
-        </form>
-      </div>
+      <AddOrderModal />
     );
   };
 

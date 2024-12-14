@@ -2,6 +2,7 @@ import {useEffect,useState} from "react";
 import StorageItem from "./StorageItem.jsx";
 import {fetchData} from "../api/api.js";
 import PropTypes from "prop-types";
+import AddProductModal from './AddProductModal.jsx';
 
 const Storage = ({openModal}) => {
   const [,setProducts] = useState([]);
@@ -34,26 +35,9 @@ const Storage = ({openModal}) => {
   },[]);
 
   // Função para abrir o modal com o formulário
-  const handleOpenModal = () => {
+  const handleAddProduct = () => {
     openModal(
-      <div>
-        <h2>Adicionar Produto</h2>
-        <form>
-          <div className="input-group">
-            <label htmlFor="nome">Nome do Produto</label>
-            <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto" />
-          </div>
-          <div className="input-group">
-            <label htmlFor="categoria">Categoria</label>
-            <input type="text" id="categoria" name="categoria" placeholder="Digite a categoria" />
-          </div>
-          <div className="input-group">
-            <label htmlFor="quantidade">Quantidade</label>
-            <input type="number" id="quantidade" name="quantidade" placeholder="Digite a quantidade" />
-          </div>
-          <button type="submit">Salvar</button>
-        </form>
-      </div>
+      <AddProductModal />
     );
   };
 
@@ -64,7 +48,7 @@ const Storage = ({openModal}) => {
         <p>Adicione produtos, modifique suas especificações e visualize em tempo real.</p>
       </div>
       <div className="products-list">
-        <button id="modal-trigger" className="item create" onClick={handleOpenModal}>
+        <button id="modal-trigger" className="item create" onClick={handleAddProduct}>
           <div className="icon">
             <i className="fi fi-rr-add"></i>
           </div>
