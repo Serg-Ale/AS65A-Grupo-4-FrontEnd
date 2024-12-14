@@ -34,7 +34,6 @@ const Storage = ({openModal}) => {
     fetchProducts();
   },[]);
 
-  // Função para abrir o modal com o formulário
   const handleAddProduct = () => {
     openModal(
       <AddProductModal />
@@ -63,6 +62,7 @@ const Storage = ({openModal}) => {
               nome={product.nome}
               categoria={product.categoria}
               quantidade={product.quantidade || 0}
+              openModal={openModal} 
             />
           ))
         ) : (

@@ -1,7 +1,25 @@
 import PropTypes from 'prop-types';
-const StorageItem = ({nome,categoria,quantidade}) => {
+
+const StorageItem = ({nome,categoria,quantidade,openModal}) => {
+  const handleEditClick = () => {
+    openModal(
+      <div>
+        <h3>Editar Produto: {nome}</h3>
+        <p>Categoria: {categoria}</p>
+        <p>Quantidade: {quantidade}</p>
+        <form>
+          <label>
+            Nova Quantidade:
+            <input type="number" name="quantidade" defaultValue={quantidade} />
+          </label>
+          <button type="submit">Salvar</button>
+        </form>
+      </div>
+    );
+  };
+
   return (
-    <button className="item">
+    <button className="item" onClick={handleEditClick}>
       <div className="item-counter">
         <strong>{quantidade}</strong>
       </div>
@@ -21,9 +39,10 @@ const StorageItem = ({nome,categoria,quantidade}) => {
 };
 
 StorageItem.propTypes = {
-  nome: PropTypes.string.isRequired,  // nome deve ser uma string e é obrigatório
-  categoria: PropTypes.string.isRequired,  // categoria deve ser uma string e é obrigatório
-  quantidade: PropTypes.number.isRequired,  // quantidade deve ser um número e é obrigatório
+  nome: PropTypes.string.isRequired,
+  categoria: PropTypes.string.isRequired,
+  quantidade: PropTypes.number.isRequired,
+  openModal: PropTypes.func.isRequired,
 };
 
 export default StorageItem;
