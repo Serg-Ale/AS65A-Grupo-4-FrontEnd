@@ -1,9 +1,9 @@
-// Storage.jsx
-import {useEffect,useState} from 'react';
-import StorageItem from './StorageItem.jsx';
-import {fetchData} from '../api/api.js';
+import {useEffect,useState} from "react";
+import StorageItem from "./StorageItem.jsx";
+import {fetchData} from "../api/api.js";
+import PropTypes from "prop-types";
 
-const Storage = () => {
+const Storage = ({openModal}) => {
   const [,setProducts] = useState([]);
   const [storage,setStorage] = useState([]);
   const [loading,setLoading] = useState(true);
@@ -33,14 +33,38 @@ const Storage = () => {
     fetchProducts();
   },[]);
 
+  // Função para abrir o modal com o formulário
+  const handleOpenModal = () => {
+    openModal(
+      <div>
+        <h2>Adicionar Produto</h2>
+        <form>
+          <div className="input-group">
+            <label htmlFor="nome">Nome do Produto</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto" />
+          </div>
+          <div className="input-group">
+            <label htmlFor="categoria">Categoria</label>
+            <input type="text" id="categoria" name="categoria" placeholder="Digite a categoria" />
+          </div>
+          <div className="input-group">
+            <label htmlFor="quantidade">Quantidade</label>
+            <input type="number" id="quantidade" name="quantidade" placeholder="Digite a quantidade" />
+          </div>
+          <button type="submit">Salvar</button>
+        </form>
+      </div>
+    );
+  };
+
   return (
     <div id="storage" className="main-container">
       <div className="title">
         <h2>Controle o estoque</h2>
-        <p>Adicione produtos, modifique suas especificações e vizualize em tempo real.</p>
+        <p>Adicione produtos, modifique suas especificações e visualize em tempo real.</p>
       </div>
       <div className="products-list">
-        <button className="item create">
+        <button id="modal-trigger" className="item create" onClick={handleOpenModal}>
           <div className="icon">
             <i className="fi fi-rr-add"></i>
           </div>
@@ -63,6 +87,10 @@ const Storage = () => {
       </div>
     </div>
   );
+};
+
+Storage.propTypes = {
+  openModal: PropTypes.func.isRequired,
 };
 
 export default Storage;
