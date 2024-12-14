@@ -1,30 +1,45 @@
-const OrderItem = () => {
+import PropTypes from 'prop-types';
+
+const OrderItem = ({nomeProduto,tipoMovimentacao,quantidade,participante,usuarioResponsavel}) => {
+// Todo: implemente class changing based on tipoMovimentacao
   return (
     <div className="item">
       <div className="product">
-        <h3>Absorvente com o nome surpreendemente grande</h3>
+        <h3>{nomeProduto}</h3>
         <div id="order-in" className="item-counter">
           <div className="value">
-            <strong>22</strong>
+            <strong>{quantidade}</strong>
           </div>
         </div>
       </div>
       <div className="info">
         <div className="from-to">
-          <strong className="name">Nome Completo</strong>
-          <strong className="phone">(43) 9 9999-9999</strong>
-          <span>RUA 00, BAIRRO, CIDADE, 00000-000</span>
+          <strong className="name">{participante.nome}</strong>
+          <strong className="phone">{participante.contato}</strong>
+          <span>{participante.endereco}</span>
         </div>
         <div className="holder">
           <div className="label">
             <i className="fi fi-rr-circle-user"></i>
             <strong>Intermediário:</strong>
           </div>
-          <strong className="name">Nome de Usuário</strong>
+          <strong className="name">{usuarioResponsavel}</strong>
         </div>
       </div>
     </div>
   );
+};
+
+OrderItem.propTypes = {
+  nomeProduto: PropTypes.string.isRequired,
+  tipoMovimentacao: PropTypes.string,
+  quantidade: PropTypes.number.isRequired,
+  participante: PropTypes.shape({
+    nome: PropTypes.string.isRequired,
+    contato: PropTypes.string,
+    endereco: PropTypes.string,
+  }).isRequired,
+  usuarioResponsavel: PropTypes.string.isRequired,
 };
 
 export default OrderItem;
