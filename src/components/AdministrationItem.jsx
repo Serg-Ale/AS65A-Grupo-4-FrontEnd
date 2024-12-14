@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
+
 const AdministrationItem = ({nome}) => {
   return (
-
     <div className="item">
       <div className="start">
         <div className="icon">
@@ -24,6 +25,10 @@ const AdministrationItem = ({nome}) => {
       </div>
     </div>
   );
+};
+
+AdministrationItem.propTypes = {
+  nome: PropTypes.string.isRequired,  // nome deve ser uma string e é obrigatório
 };
 
 export default AdministrationItem;
