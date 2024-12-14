@@ -4,7 +4,7 @@ import StorageItem from './StorageItem.jsx';
 import {fetchData} from '../api/api.js';
 
 const Storage = () => {
-  const [products,setProducts] = useState([]);
+  const [,setProducts] = useState([]);
   const [storage,setStorage] = useState([]);
   const [loading,setLoading] = useState(true);
 
