@@ -1,6 +1,7 @@
-import {useEffect} from 'react';
+// Administration.jsx
+import {useEffect,useState} from 'react';
 import AdministrationItem from "./AdministrationItem.jsx";
-import {useState} from 'react';
+import {fetchData} from '../api/api.js';
 
 const Administration = () => {
   const [administrators,setAdministrators] = useState([]);
@@ -8,44 +9,20 @@ const Administration = () => {
 
   // Função para buscar administradores
   const fetchAdministrators = async () => {
-    const token = localStorage.getItem("token"); // Recupera o token do localStorage
-    if (!token) {
-      console.error("Token não encontrado. Faça login novamente.");
-      return;
+    const data = await fetchData("http://localhost:3001/users");
+
+    if (data) {
+      setAdministrators(data);
     }
 
-    try {
-      const response = await fetch("http://localhost:3001/users",{
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`, // Inclui o token no cabeçalho
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        if (response.status === 401 || response.status === 403) {
-          console.error("Acesso negado. Verifique suas credenciais.");
-        } else {
-          throw new Error("Erro ao buscar administradores");
-        }
-        return;
-      }
-
-      const data = await response.json();
-      console.log(data);
-      setAdministrators(data); // Define os dados no estado
-    } catch (error) {
-      console.error(error.message);
-    } finally {
-      setLoading(false); // Finaliza o carregamento
-    }
+    setLoading(false);
   };
 
   // Hook para executar a busca quando o componente for montado
   useEffect(() => {
     fetchAdministrators();
   },[]);
+
   return (
     <div id="administration" className="main-container">
       <div className="title">
