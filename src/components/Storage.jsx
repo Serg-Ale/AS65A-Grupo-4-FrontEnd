@@ -1,9 +1,8 @@
-import {useEffect,useState} from "react";
-import StorageItem from "./StorageItem.jsx";
-import {fetchData} from "../api/api.js";
 import PropTypes from "prop-types";
+import {useEffect,useState} from "react";
+import {fetchData} from "../api/api.js";
 import AddProductModal from './AddProductModal.jsx';
-
+import StorageItem from "./StorageItem.jsx";
 const Storage = ({openModal}) => {
   const [,setProducts] = useState([]);
   const [storage,setStorage] = useState([]);
@@ -19,7 +18,9 @@ const Storage = ({openModal}) => {
       // Buscar o estoque para cada produto
       const storageData = await Promise.all(
         data.map(async (product) => {
-          const quantityData = await fetchData(`http://localhost:3001/estoque/${product.nome}`);
+          const quantityData = await fetchData(
+            `http://localhost:3001/estoque/${product.nome}`
+          );
           return {...product,quantidade: quantityData?.quantidade_disponivel || 0};
         })
       );
@@ -34,9 +35,16 @@ const Storage = ({openModal}) => {
     fetchProducts();
   },[]);
 
+
   const handleAddProduct = () => {
     openModal(
-      <AddProductModal />
+      <AddProductModal
+        onClose={() => {
+          openModal(null); // Fecha o modal
+          fetchProducts(); // Recarrega a lista de produtos
+        }}
+        fetchProducts={fetchProducts}
+      />
     );
   };
 
@@ -62,7 +70,7 @@ const Storage = ({openModal}) => {
               nome={product.nome}
               categoria={product.categoria}
               quantidade={product.quantidade || 0}
-              openModal={openModal} 
+              openModal={openModal}
             />
           ))
         ) : (
