@@ -1,74 +1,44 @@
-import {useState} from "react";
-import {createData} from "../api/api"; // Função para criar produtos na API
 import PropTypes from "prop-types";
+import useFormHandler from '../hooks/useFormHandler.js';
+import {createData} from '../api/api.js';
+import ReusableForm from './ReusableForm.jsx';
 
 const AddProductModal = ({onClose,fetchProducts}) => {
-  const [formData,setFormData] = useState({
+  const initialState = {
     nome: "",
     categoria: "",
-  });
-
-  const handleInputChange = (e) => {
-    const {name,value} = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
   };
 
-  const handleSubmit = async () => {
-
-    try {
-      const response = await createData("http://localhost:3001/produto",formData);
+  const {formData,handleInputChange,handleSubmit} = useFormHandler(
+    initialState,
+    async (data) => {
+      const response = await createData("http://localhost:3001/produto",data);
       if (response) {
-        console.log("Produto criado com sucesso:",response);
-        await fetchProducts(); // Atualiza a lista de produtos no componente pai
-        onClose(); // Fecha o modal
+        await fetchProducts();
+        onClose();
       }
-    } catch (error) {
-      console.error("Erro ao criar o produto:",error);
     }
-  };
+  );
+
+  const formConfig = [
+    {label: "Nome do Produto",name: "nome",type: "text",placeholder: "Digite o nome do produto",required: true},
+    {label: "Categoria",name: "categoria",type: "text",placeholder: "Digite a categoria",required: true},
+  ];
 
   return (
-    <div>
-      <h2>Adicionar Produto</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="input-group">
-          <label htmlFor="nome">Nome do Produto</label>
-          <input
-            type="text"
-            id="nome"
-            name="nome"
-            value={formData.nome}
-            onChange={handleInputChange}
-            placeholder="Digite o nome do produto"
-            required
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="categoria">Categoria</label>
-          <input
-            type="text"
-            id="categoria"
-            name="categoria"
-            value={formData.categoria}
-            onChange={handleInputChange}
-            placeholder="Digite a categoria"
-            required
-          />
-        </div>
-        <div className="button-group">
-          <button type="submit">Salvar</button>
-        </div>
-      </form>
-    </div>
+    <ReusableForm
+      title="Adicionar Produto"
+      formConfig={formConfig}
+      formData={formData}
+      handleInputChange={handleInputChange}
+      handleSubmit={handleSubmit}
+    />
   );
 };
 
 AddProductModal.propTypes = {
-  onClose: PropTypes.func.isRequired, // Fecha o modal
-  fetchProducts: PropTypes.func.isRequired, // Atualiza os produtos no componente pai
+  onClose: PropTypes.func.isRequired,
+  fetchProducts: PropTypes.func.isRequired,
 };
 
 export default AddProductModal;
