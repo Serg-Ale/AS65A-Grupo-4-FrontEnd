@@ -67,6 +67,7 @@ const Storage = ({openModal}) => {
           storage.map((product) => (
             <StorageItem
               key={product.id_produto}
+              id={product.id_produto}
               nome={product.nome}
               categoria={product.categoria}
               quantidade={product.quantidade || 0}

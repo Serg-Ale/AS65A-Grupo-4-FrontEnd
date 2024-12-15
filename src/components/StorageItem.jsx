@@ -1,20 +1,15 @@
 import PropTypes from 'prop-types';
+import EditStorageModal from './EditStorageModal.jsx';
 
-const StorageItem = ({nome,categoria,quantidade,openModal}) => {
+const StorageItem = ({id,nome,categoria,quantidade,openModal}) => {
   const handleEditClick = () => {
     openModal(
-      <div>
-        <h3>Editar Produto: {nome}</h3>
-        <p>Categoria: {categoria}</p>
-        <p>Quantidade: {quantidade}</p>
-        <form>
-          <label>
-            Nova Quantidade:
-            <input type="number" name="quantidade" defaultValue={quantidade} />
-          </label>
-          <button type="submit">Salvar</button>
-        </form>
-      </div>
+      <EditStorageModal
+        id={id}
+        nome={nome}
+        categoria={categoria}
+        quantidade={quantidade}
+      />
     );
   };
 
@@ -39,6 +34,7 @@ const StorageItem = ({nome,categoria,quantidade,openModal}) => {
 };
 
 StorageItem.propTypes = {
+  id: PropTypes.int,
   nome: PropTypes.string.isRequired,
   categoria: PropTypes.string.isRequired,
   quantidade: PropTypes.number.isRequired,
