@@ -1,27 +1,33 @@
 import PropTypes from "prop-types";
-import {useEffect,useRef} from "react";
+import {useEffect,useRef,useCallback} from "react";
 import "../scss/components/Modal.scss";
 
-const Modal = ({isOpen,onClose,children,className}) => {
+const Modal = ({
+  isOpen = false,
+  onClose = () => {},
+  children = null,
+  className = "",
+}) => {
   const modalRef = useRef(null);
 
-  const handleOutsideClick = (e) => {
-    if (modalRef.current && !modalRef.current.contains(e.target)) {
-      onClose();
-    }
-  };
+  const handleOutsideClick = useCallback(
+    (e) => {
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
+        onClose();
+      }
+    },
+    [onClose]
+  );
 
   useEffect(() => {
     if (isOpen) {
       document.addEventListener("mousedown",handleOutsideClick);
-    } else {
-      document.removeEventListener("mousedown",handleOutsideClick);
     }
 
     return () => {
       document.removeEventListener("mousedown",handleOutsideClick);
     };
-  },[isOpen]);
+  },[handleOutsideClick,isOpen]);
 
   if (!isOpen) return null;
 
@@ -37,12 +43,8 @@ const Modal = ({isOpen,onClose,children,className}) => {
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired, // Controla a visibilidade do modal
   onClose: PropTypes.func.isRequired, // Função chamada ao fechar o modal
-  children: PropTypes.node.isRequired, // Conteúdo do modal
+  children: PropTypes.node, // Conteúdo do modal
   className: PropTypes.string, // Classes adicionais para personalização
-};
-
-Modal.defaultProps = {
-  className: "",
 };
 
 export default Modal;
