@@ -1,8 +1,9 @@
 import {updateData} from '../api/api.js';
+import PropTypes from 'prop-types';
 import useFormHandler from '../hooks/useFormHandler.js';
 import ReusableForm from './ReusableForm.jsx';
 
-const EditStorageModal = ({id,nome,categoria}) => {
+const EditStorageModal = ({id_produto,nome,categoria}) => {
   const initialState = {
     nome,
     categoria
@@ -10,7 +11,7 @@ const EditStorageModal = ({id,nome,categoria}) => {
 
   const {formData,handleInputChange,handleSubmit} = useFormHandler(
     initialState,
-    (data) => updateData(`http://localhost:3001/produto/${id}`,data)
+    (data) => updateData(`http://localhost:3001/produto/${id_produto}`,data)
   );
 
   const formConfig = [
@@ -42,5 +43,10 @@ const EditStorageModal = ({id,nome,categoria}) => {
   );
 };
 
+EditStorageModal.propTypes = {
+  id_produto: PropTypes.number.isRequired,
+  nome: PropTypes.string.isRequired,
+  categoria: PropTypes.string.isRequired,
+};
 
 export default EditStorageModal;

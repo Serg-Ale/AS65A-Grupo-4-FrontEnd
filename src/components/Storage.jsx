@@ -21,7 +21,8 @@ const Storage = ({openModal}) => {
           const quantityData = await fetchData(
             `http://localhost:3001/estoque/${product.nome}`
           );
-          return {...product,quantidade: quantityData?.quantidade_disponivel || 0};
+          // TODO: implementar alguma forma do usuário entender que esta N/A pq produto ainda não existe no estoque
+          return {...product,quantidade: quantityData?.quantidade_disponivel || "N/A"};
         })
       );
       setStorage(storageData);
@@ -67,7 +68,7 @@ const Storage = ({openModal}) => {
           storage.map((product) => (
             <StorageItem
               key={product.id_produto}
-              id={product.id_produto}
+              id_produto={product.id_produto}
               nome={product.nome}
               categoria={product.categoria}
               quantidade={product.quantidade || 0}
