@@ -20,7 +20,6 @@ main.dashboard {
     color: var(--secondary);
     background-color: var(--secondary);
     padding: 2rem;
-    height: 135px;
 
     .content {
       position: relative;
@@ -152,8 +151,7 @@ main.dashboard {
         height: 100%;
         z-index: 2;
         width: 24%;
-        padding: 2rem;
-        padding-right: 0;
+        padding: 2rem 0;
         border-radius: 1rem;
         color: var(--white);
 
@@ -237,11 +235,17 @@ main.dashboard {
         }
       }
 
+      .grid-separe {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
       .main-container {
         height: 100%;
         width: 100%;
-        padding: 2rem;
-        padding-left: 0;
+        padding: 2rem 0;
 
         .title {
           width: 100%;
@@ -388,11 +392,11 @@ main.dashboard {
           }
         }
 
-        .user-list {
+        .user-list, .participants-list {
           width: 100%;
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
 
           .item {
             width: 100%;
@@ -459,6 +463,26 @@ main.dashboard {
                     }
                   }
                 }
+
+                .separe {
+                  display: flex;
+                  gap: 0.5rem;
+                  justify-content: center;
+                  align-items: center;
+                  
+                  strong {
+                    color: var(--primary);
+                    white-space: nowrap;
+                  }
+
+                  p {
+                    font-size: 0.9rem;
+                    color: var(--black);
+                    font-weight: 600;
+                    margin: 0;
+                    
+                  }
+                }
               }
             }
 
@@ -466,6 +490,7 @@ main.dashboard {
               display: flex;
               justify-content: center;
               align-items: center;
+              margin-left: 1rem;
 
               button {
                 height: 54px;

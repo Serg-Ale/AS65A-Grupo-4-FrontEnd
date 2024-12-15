@@ -3,14 +3,16 @@ header {
   width: 100%;
   color: var(--secondary);
   backdrop-filter: blur(5px);
-  padding: 2rem;
+  padding: 0 !important;
   z-index: 100;
+  height: 135px;
 
   .content {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 100%;
     gap: 2rem;
 
     @media all and (max-width: 999px) {

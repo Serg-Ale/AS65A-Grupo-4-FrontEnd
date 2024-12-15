@@ -1,11 +1,17 @@
 import PropTypes from "prop-types";
 
-const ReusableForm = ({formConfig,formData,handleInputChange,handleSubmit,title}) => {
+const ReusableForm = ({
+  formConfig,
+  formData,
+  handleInputChange,
+  handleSubmit,
+  title,
+}) => {
   return (
-    <div>
+    <div className="styled-container">
       <h2>{title}</h2>
       <form onSubmit={handleSubmit}>
-        {formConfig.map(({label,name,type,placeholder,required}) => (
+        {formConfig.map(({ label, name, type, placeholder, required }) => (
           <div key={name} className="input-group">
             <label htmlFor={name}>{label}</label>
             <input
@@ -19,7 +25,9 @@ const ReusableForm = ({formConfig,formData,handleInputChange,handleSubmit,title}
             />
           </div>
         ))}
-        <button type="submit">Salvar</button>
+        <button type="submit">
+          <img src="/images/favicon-white.png" alt="Enviar" />
+        </button>
       </form>
     </div>
   );

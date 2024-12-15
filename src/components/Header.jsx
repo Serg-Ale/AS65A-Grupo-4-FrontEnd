@@ -1,7 +1,7 @@
 const Header = ({ setAction }) => {
   return (
     <>
-      <header className="unlogged-header">
+      <header>
         <div className="content">
           <a href="#main-nav" id="menu">
             <i className="fi fi-rr-menu-burger" src="" alt="" />

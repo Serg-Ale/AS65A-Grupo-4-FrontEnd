@@ -33,7 +33,7 @@ const EditStorageModal = ({id_produto,nome,categoria}) => {
     <div>
 
       <ReusableForm
-        title="Adicionar Novo Administrador"
+        title="Editar Produto"
         formConfig={formConfig}
         formData={formData}
         handleInputChange={handleInputChange}
