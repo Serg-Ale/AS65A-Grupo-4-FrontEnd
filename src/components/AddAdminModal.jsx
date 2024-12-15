@@ -15,8 +15,20 @@ const AddAdminModal = () => {
   );
 
   const formConfig = [
-    {label: "Nome",name: "nome",type: "text",placeholder: "Digite o nome do administrador",required: true},
-    {label: "Senha",name: "senha",type: "password",placeholder: "Digite a senha",required: true},
+    {
+      label: "Nome",
+      name: "nome",
+      type: "text",
+      placeholder: "Digite o nome do administrador",
+      required: true
+    },
+    {
+      label: "Senha",
+      name: "senha",
+      type: "password",
+      placeholder: "Digite a senha",
+      required: true
+    },
   ];
 
   return (

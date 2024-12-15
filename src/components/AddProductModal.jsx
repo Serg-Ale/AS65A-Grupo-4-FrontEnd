@@ -21,8 +21,20 @@ const AddProductModal = ({onClose,fetchProducts}) => {
   );
 
   const formConfig = [
-    {label: "Nome do Produto",name: "nome",type: "text",placeholder: "Digite o nome do produto",required: true},
-    {label: "Categoria",name: "categoria",type: "text",placeholder: "Digite a categoria",required: true},
+    {
+      label: "Nome do Produto",
+      name: "nome",
+      type: "text",
+      placeholder: "Digite o nome do produto",
+      required: true
+    },
+    {
+      label: "Categoria",
+      name: "categoria",
+      type: "text",
+      placeholder: "Digite a categoria",
+      required: true
+    },
   ];
 
   return (
