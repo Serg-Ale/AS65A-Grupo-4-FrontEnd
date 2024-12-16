@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import {createData,fetchData} from "../api/api.js";
 import useFormHandler from '../hooks/useFormHandler.js';
 import ReusableSelectForm from './ReusableSelectForm.jsx';
+import Modal from "./Modal.jsx";
 
-const AddOrderModal = ({onClose,fetchOrders}) => {
+const AddOrderModal = ({isOpen,onClose,fetchOrders}) => {
   const [products,setProducts] = useState([]);
   const [categories,setCategories] = useState([]);
   const [loading,setLoading] = useState(true);
@@ -18,11 +19,10 @@ const AddOrderModal = ({onClose,fetchOrders}) => {
   const {formData,handleInputChange,handleSubmit} = useFormHandler(
     initialState,
     async (data) => {
-      const response = await createData("http://localhost:3001/movimentacoes",data);
-      if (response) {
-        await fetchOrders();
-        onClose();
-      }
+      console.log("Submitting form data:",data);
+      await createData("http://localhost:3001/movimentacoes",data);
+      onClose();
+      fetchOrders();
     }
   );
 
@@ -70,13 +70,15 @@ const AddOrderModal = ({onClose,fetchOrders}) => {
   }
 
   return (
-    <ReusableSelectForm
-      title="Adicionar Movimentação"
-      formConfig={formConfig}
-      formData={formData}
-      handleInputChange={handleInputChange}
-      handleSubmit={handleSubmit}
-    />
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <ReusableSelectForm
+        title="Adicionar Movimentação"
+        formConfig={formConfig}
+        formData={formData}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+      />
+    </Modal>
   );
 };
 

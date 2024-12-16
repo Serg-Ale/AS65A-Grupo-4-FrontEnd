@@ -1,11 +1,11 @@
 import {useEffect,useState} from "react";
-import PropTypes from "prop-types";
-import OrderItem from "./OrderItem.jsx";
 import {fetchData} from "../api/api.js";
 import AddOrderModal from './AddOrderModal.jsx';
+import OrderItem from "./OrderItem.jsx";
 
-const Order = ({openModal}) => {
+const Order = () => {
   const [orders,setOrders] = useState([]);
+  const [action,setAction] = useState("");
   const [loading,setLoading] = useState(true);
 
   // Função para buscar movimentações
@@ -24,11 +24,6 @@ const Order = ({openModal}) => {
     fetchOrders();
   },[]);
 
-  const handleAddOrder = () => {
-    openModal(
-      <AddOrderModal />
-    );
-  };
 
   return (
     <div id="orders" className="main-container">
@@ -40,11 +35,22 @@ const Order = ({openModal}) => {
         <div
           id="modal-trigger"
           className="item create"
-          onClick={handleAddOrder}
+          onClick={(e) => {
+            e.preventDefault();
+            setAction("add-order-modal");
+          }}
         >
           <h3>Adicionar Movimentação</h3>
           <i className="fi fi-rr-add"></i>
         </div>
+        <AddOrderModal
+          isOpen={action === "add-order-modal"}
+          onClose={() => {
+            console.log("Closing modal...");
+            setAction("");
+          }}
+          fetchOrders={fetchOrders}
+        />
 
         {loading ? (
           <p>Carregando...</p>
@@ -57,7 +63,6 @@ const Order = ({openModal}) => {
               quantidade={order.quantidade}
               participante={order.Participante}
               usuarioResponsavel={order.Usuario.nome}
-              openModal={openModal}
             />
           ))
         ) : (
@@ -68,8 +73,5 @@ const Order = ({openModal}) => {
   );
 };
 
-Order.propTypes = {
-  openModal: PropTypes.func.isRequired,
-};
 
 export default Order;

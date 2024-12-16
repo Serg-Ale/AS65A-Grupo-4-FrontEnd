@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import {useEffect,useState} from "react";
 import {fetchData} from "../api/api.js";
 import StorageItem from "./StorageItem.jsx";
@@ -22,8 +21,7 @@ const Storage = () => {
           const quantityData = await fetchData(
             `http://localhost:3001/estoque/${product.nome}`
           );
-          // TODO: implementar alguma forma do usuário entender que esta N/A pq produto ainda não existe no estoque
-          return {...product,quantidade: quantityData?.quantidade_disponivel || "N/A"};
+          return {...product,quantidade: quantityData?.quantidade_disponivel || 0};
         })
       );
       setStorage(storageData);
@@ -83,8 +81,5 @@ const Storage = () => {
   );
 };
 
-Storage.propTypes = {
-  openModal: PropTypes.func.isRequired,
-};
 
 export default Storage;
