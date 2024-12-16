@@ -1,18 +1,8 @@
-import MainHeader from "../components/MainHeader.jsx";
-import Aside from "../components/Aside.jsx";
-import Modal from "../components/Modal.jsx";
 import {Outlet} from "react-router-dom";
-import {useState} from "react";
+import Aside from "../components/Aside.jsx";
+import MainHeader from "../components/MainHeader.jsx";
 
 const Dashboard = () => {
-  const [isModalOpen,setIsModalOpen] = useState(false); // Controle do modal
-  const [modalContent,setModalContent] = useState(null); // Conteúdo dinâmico do modal
-
-  // Função para abrir o modal
-  const openModal = (content) => {
-    setModalContent(content);
-    setIsModalOpen(true);
-  };
 
   return (
     <main className="dashboard">
@@ -27,10 +17,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Renderiza o Modal Genérico */}
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        {modalContent}
-      </Modal>
     </main>
   );
 };

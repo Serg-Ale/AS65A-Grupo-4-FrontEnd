@@ -1,4 +1,6 @@
-const Header = ({ setAction }) => {
+import PropTypes from "prop-types";
+
+const Header = ({setAction}) => {
   return (
     <>
       <header>
@@ -39,7 +41,9 @@ const Header = ({ setAction }) => {
             <a href="#contato">Contato</a>
           </nav>
           <div className="action">
-            <a href="#open-login" className="button alt"
+            <a
+              href="#open-login"
+              className="button alt"
               onClick={(e) => {
                 e.preventDefault(); // Previne comportamento padrão de redirecionamento
                 setAction("login-modal"); // Mostra o modal
@@ -52,6 +56,10 @@ const Header = ({ setAction }) => {
       </div>
     </>
   );
+};
+
+Header.propTypes = {
+  setAction: PropTypes.func.isRequired, // Valida que `setAction` é uma função e é obrigatório
 };
 
 export default Header;

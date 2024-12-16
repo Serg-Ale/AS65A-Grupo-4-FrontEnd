@@ -2,8 +2,9 @@ import {updateData} from '../api/api.js';
 import PropTypes from 'prop-types';
 import useFormHandler from '../hooks/useFormHandler.js';
 import ReusableForm from './ReusableForm.jsx';
+import Modal from './Modal.jsx';
 
-const EditStorageModal = ({id_produto,nome,categoria}) => {
+const EditStorageModal = ({id_produto,nome,categoria,isOpen,onClose,fetchProducts}) => {
   const initialState = {
     nome,
     categoria
@@ -11,7 +12,12 @@ const EditStorageModal = ({id_produto,nome,categoria}) => {
 
   const {formData,handleInputChange,handleSubmit} = useFormHandler(
     initialState,
-    (data) => updateData(`http://localhost:3001/produto/${id_produto}`,data)
+    async (data) => {
+      console.log("Submitting form data:",data);
+      await updateData(`http://localhost:3001/produto/${id_produto}`,data);
+      onClose();
+      fetchProducts();
+    }
   );
 
   const formConfig = [
@@ -30,8 +36,7 @@ const EditStorageModal = ({id_produto,nome,categoria}) => {
   ];
 
   return (
-    <div>
-
+    <Modal isOpen={isOpen} onClose={onClose}>
       <ReusableForm
         title="Editar Produto"
         formConfig={formConfig}
@@ -39,7 +44,7 @@ const EditStorageModal = ({id_produto,nome,categoria}) => {
         handleInputChange={handleInputChange}
         handleSubmit={handleSubmit}
       />
-    </div>
+    </Modal>
   );
 };
 
@@ -47,6 +52,9 @@ EditStorageModal.propTypes = {
   id_produto: PropTypes.number.isRequired,
   nome: PropTypes.string.isRequired,
   categoria: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  fetchProducts: PropTypes.func.isRequired,
 };
 
 export default EditStorageModal;

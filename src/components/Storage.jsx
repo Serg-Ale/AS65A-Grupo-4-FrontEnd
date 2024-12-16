@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 import {useEffect,useState} from "react";
 import {fetchData} from "../api/api.js";
-import AddProductModal from './AddProductModal.jsx';
 import StorageItem from "./StorageItem.jsx";
-const Storage = ({openModal}) => {
+import AddProductModal from "./AddProductModal.jsx";
+const Storage = () => {
   const [,setProducts] = useState([]);
   const [storage,setStorage] = useState([]);
   const [loading,setLoading] = useState(true);
+  const [action,setAction] = useState("");
 
   // Função para buscar todos os produtos
   const fetchProducts = async () => {
@@ -37,18 +38,6 @@ const Storage = ({openModal}) => {
   },[]);
 
 
-  const handleAddProduct = () => {
-    openModal(
-      <AddProductModal
-        onClose={() => {
-          openModal(null); // Fecha o modal
-          fetchProducts(); // Recarrega a lista de produtos
-        }}
-        fetchProducts={fetchProducts}
-      />
-    );
-  };
-
   return (
     <div id="storage" className="main-container">
       <div className="title">
@@ -56,12 +45,23 @@ const Storage = ({openModal}) => {
         <p>Adicione produtos, modifique suas especificações e visualize em tempo real.</p>
       </div>
       <div className="products-list">
-        <button id="modal-trigger" className="item create" onClick={handleAddProduct}>
+        <button id="modal-trigger" className="item create" onClick={(e) => {
+          e.preventDefault();
+          setAction("add-product-modal");
+        }}>
           <div className="icon">
             <i className="fi fi-rr-add"></i>
           </div>
           <h3>Adicionar Produto</h3>
         </button>
+        <AddProductModal
+          isOpen={action === "add-product-modal"}
+          onClose={() => {
+            console.log("Closing modal...");
+            setAction("");
+          }}
+          fetchProducts={fetchProducts}
+        />
         {loading ? (
           <p>Carregando...</p>
         ) : storage.length > 0 ? (
@@ -72,7 +72,7 @@ const Storage = ({openModal}) => {
               nome={product.nome}
               categoria={product.categoria}
               quantidade={product.quantidade || 0}
-              openModal={openModal}
+              fetchProducts={fetchProducts}
             />
           ))
         ) : (

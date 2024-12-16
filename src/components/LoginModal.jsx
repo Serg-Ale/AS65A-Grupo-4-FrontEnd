@@ -4,6 +4,8 @@ import {useNavigate} from "react-router-dom";
 import {login} from "../api/auth";
 import Modal from "./Modal";
 import "../scss/components/Login.scss";
+import "../scss/components/Modal.scss";
+
 
 const LoginModal = ({isOpen,onClose}) => {
   const [usuario,setUsuario] = useState("");
@@ -22,7 +24,7 @@ const LoginModal = ({isOpen,onClose}) => {
       localStorage.setItem("usuario",usuario);
 
       onClose(); // Fecha o modal após login bem-sucedido
-      navigate("/dashboard");
+      navigate("/dashboard/storage");
     } catch (err) {
       setError(err.response?.data?.message || "Erro ao realizar o login.");
     }
