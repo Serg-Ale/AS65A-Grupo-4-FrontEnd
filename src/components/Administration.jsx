@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import {useEffect,useState} from "react";
 import AdministrationItem from "./AdministrationItem.jsx";
 import ParticipantItem from "./ParticipantItem.jsx";
-import { fetchData } from "../api/api.js";
+import {fetchData} from "../api/api.js";
 import PropTypes from "prop-types";
 import AddAdminModal from "./AddAdminModal.jsx";
 
-const Administration = ({ openModal }) => {
-  const [administrators, setAdministrators] = useState([]);
-  const [loading, setLoading] = useState(true);
+const Administration = ({openModal}) => {
+  const [administrators,setAdministrators] = useState([]);
+  const [loading,setLoading] = useState(true);
+  const [action,setAction] = useState("");
 
   // Função para buscar administradores
   const fetchAdministrators = async () => {
@@ -23,12 +24,8 @@ const Administration = ({ openModal }) => {
   // Hook para executar a busca quando o componente for montado
   useEffect(() => {
     fetchAdministrators();
-  }, []);
+  },[]);
 
-  // Função para abrir o modal de criação de novo administrador
-  const handleAddAdministrator = () => {
-    openModal(<AddAdminModal />);
-  };
 
   return (
     <div className="grid-separe">
@@ -38,7 +35,10 @@ const Administration = ({ openModal }) => {
           <p>Adicione e gerencie os usuários da plataforma.</p>
         </div>
         <div className="user-list">
-          <div className="item create" onClick={handleAddAdministrator}>
+          <div className="item create" onClick={(e) => {
+            e.preventDefault();
+            setAction("add-administrator-modal");
+          }}>
             <div className="start">
               <div className="icon">
                 <i className="fi fi-rr-circle-user"></i>
@@ -53,6 +53,13 @@ const Administration = ({ openModal }) => {
               </button>
             </div>
           </div>
+          <AddAdminModal
+            isOpen={action === "add-administrator-modal"} onClose={() => {
+              console.log("Closing modal....");
+              setAction("");
+            }}
+            fetchAdministrators={fetchAdministrators}
+          />
           {loading ? (
             <p>Carregando...</p>
           ) : administrators.length > 0 ? (
@@ -91,7 +98,7 @@ const Administration = ({ openModal }) => {
           </div>
           <ParticipantItem />
           <ParticipantItem />
-          <ParticipantItem/>
+          <ParticipantItem />
         </div>
       </div>
     </div>

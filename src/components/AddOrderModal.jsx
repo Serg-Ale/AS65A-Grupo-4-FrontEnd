@@ -83,6 +83,7 @@ const AddOrderModal = ({isOpen,onClose,fetchOrders}) => {
 };
 
 AddOrderModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   fetchOrders: PropTypes.func.isRequired,
 };
