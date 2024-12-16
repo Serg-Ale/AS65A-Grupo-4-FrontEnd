@@ -1,13 +1,10 @@
-import {useState} from "react";
-import Administration from "../components/Administration.jsx";
-import Aside from "../components/Aside.jsx";
 import MainHeader from "../components/MainHeader.jsx";
-import Orders from "../components/Orders.jsx";
-import Storage from "../components/Storage.jsx";
+import Aside from "../components/Aside.jsx";
 import Modal from "../components/Modal.jsx";
+import {Outlet} from "react-router-dom";
+import {useState} from "react";
 
 const Dashboard = () => {
-  const [activeComponent,setActiveComponent] = useState("Storage"); // Componente padrão
   const [isModalOpen,setIsModalOpen] = useState(false); // Controle do modal
   const [modalContent,setModalContent] = useState(null); // Conteúdo dinâmico do modal
 
@@ -17,25 +14,16 @@ const Dashboard = () => {
     setIsModalOpen(true);
   };
 
-  const renderComponent = () => {
-    switch (activeComponent) {
-      case "Storage":
-        return <Storage openModal={openModal} />;
-      case "Orders":
-        return <Orders openModal={openModal} />;
-      case "Administration":
-      default:
-        return <Administration openModal={openModal} />;
-    }
-  };
-
   return (
     <main className="dashboard">
       <MainHeader />
       <div className="board">
         <div className="content">
-          <Aside setActiveComponent={setActiveComponent} />
-          {renderComponent()}
+          <Aside />
+          <div className="content-area">
+            {/* Exibe o conteúdo conforme a rota */}
+            <Outlet />
+          </div>
         </div>
       </div>
 
