@@ -1,0 +1,18 @@
+.about {
+    margin: 3rem 0;
+    .content {
+        
+        .grid-separe {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+
+            .image {
+
+            }
+            .info {
+
+            }
+        }
+    }
+}

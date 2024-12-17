@@ -10,14 +10,12 @@ const Hero = () => {
       <div className="content">
         <div className="heading">
           <h1>
-            Lorem ipsum <br />
-            dolor sit amet
+            <strong>bons fluidos</strong> <br />
+            Dignidade para cada período
           </h1>
           <p>
-            Consectetur adipiscing elit. Etiam quam augue, scelerisque eu leo
-            id, lobortis laoreet turpis. Nam ac semper nulla. Aenean vitae eros
-            volutpat, maximus purus in, tristique elit. Cras elit quam, tempus id
-            nisl a.
+            O Projeto Bons Fluidos mobiliza doações de absorventes para combater
+            a pobreza menstrual e apoiar quem mais precisa.
           </p>
           <a href="#" className="button alt">
             Ver mais <i className="fi fi-rr-arrow-small-right"></i>
