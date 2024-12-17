@@ -11,7 +11,7 @@ const ReusableForm = ({ title, formConfig, formData, handleInputChange, handleSu
             id={name}
             name={name}
             type={type}
-            className={className}
+            className={type !== "checkbox" ? className : ""}
             placeholder={type !== "checkbox" ? placeholder : undefined}
             value={type === "checkbox" ? undefined : formData[name] || ""}
             checked={type === "checkbox" ? formData[name] : undefined}
