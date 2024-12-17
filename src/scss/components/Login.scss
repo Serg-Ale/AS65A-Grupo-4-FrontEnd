@@ -20,6 +20,10 @@
             justify-content: center;
             gap: 2rem;
 
+            .block-input {
+                pointer-events:none;
+            }
+
             .input-item {
                 width: 100%;
                 display: flex;
