@@ -4,10 +4,14 @@ import useFormHandler from "../hooks/useFormHandler.js";
 import Modal from "./Modal.jsx";
 import ReusableForm from "./ReusableForm.jsx";
 
+
 const EditParticipantModal = ({ isOpen, onClose, fetchParticipants }) => {
+
+
   const initialState = {
+    anonimo: false, // Adiciona o estado inicial do checkbox
     senhaAtual: "Senha atual",
-    novaSenha: "Nova senha"
+    novaSenha: "Nova senha",
   };
 
   const { formData, handleInputChange, handleSubmit } = useFormHandler(
@@ -20,12 +24,24 @@ const EditParticipantModal = ({ isOpen, onClose, fetchParticipants }) => {
     }
   );
 
+  // Função para retornar a classe dinamicamente
+  // const getDynamicClass = () => {
+  //   return formData.anonimo ? "block-input" : ""; // Aplica 'block-input' apenas se anonimo estiver true
+  // };
+
   const formConfig = [
     {
       label: "Anônimo",
       name: "anonimo",
-      type: "checkbox", // Campo checkbox para true/false
-      placeholder: "", // Não precisa de placeholder para checkbox
+      type: "checkbox",
+      placeholder: "",
+    },
+    {
+      label: "Nome",
+      name: "nome",
+      type: "text",
+      placeholder: "Digite o nome...",
+      required: true,
     },
     {
       label: "Endereço",
@@ -44,22 +60,23 @@ const EditParticipantModal = ({ isOpen, onClose, fetchParticipants }) => {
   ];
 
   return (
-    <Modal isOpen={ isOpen } onClose={ onClose }>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <ReusableForm
-        title="Editar Produto"
-        formConfig={ formConfig }
-        formData={ formData }
-        handleInputChange={ handleInputChange }
-        handleSubmit={ handleSubmit }
+        title="Editar Intuição"
+        formConfig={formConfig}
+        formData={formData}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+        className={formData.anonimo ? "block-input" : ""}
       />
     </Modal>
   );
 };
-
 
 EditParticipantModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   fetchParticipants: PropTypes.func.isRequired,
 };
+
 export default EditParticipantModal;

@@ -38,7 +38,7 @@ const EditAdminModal = ({ isOpen, onClose, fetchAdministrators }) => {
   return (
     <Modal isOpen={ isOpen } onClose={ onClose }>
       <ReusableForm
-        title="Editar Produto"
+        title="Editar Admin"
         formConfig={ formConfig }
         formData={ formData }
         handleInputChange={ handleInputChange }
