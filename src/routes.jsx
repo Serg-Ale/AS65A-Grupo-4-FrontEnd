@@ -1,4 +1,4 @@
-import {BrowserRouter,Route,Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Storage from "./components/Storage";
@@ -9,11 +9,11 @@ function AppRoutes() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/dashboard" element={<Dashboard />}>
-                    <Route path="storage" element={<Storage />} />
-                    <Route path="orders" element={<Orders />} />
-                    <Route path="administration" element={<Administration />} />
+                <Route path="/" element={ <Home /> } />
+                <Route path="/dashboard" element={ <Dashboard /> }>
+                    <Route path="storage" element={ <Storage /> } />
+                    <Route path="orders" element={ <Orders /> } />
+                    <Route path="administration" element={ <Administration /> } />
                 </Route>
             </Routes>
         </BrowserRouter>

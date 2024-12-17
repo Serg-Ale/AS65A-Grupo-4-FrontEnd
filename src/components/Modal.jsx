@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import {useEffect,useRef,useCallback} from "react";
+import { useEffect, useRef, useCallback } from "react";
 import "../scss/components/Modal.scss";
 
 const Modal = ({
@@ -21,21 +21,21 @@ const Modal = ({
 
   useEffect(() => {
     if (isOpen) {
-      document.addEventListener("mousedown",handleOutsideClick);
+      document.addEventListener("mousedown", handleOutsideClick);
     }
 
     return () => {
-      document.removeEventListener("mousedown",handleOutsideClick);
+      document.removeEventListener("mousedown", handleOutsideClick);
     };
-  },[handleOutsideClick,isOpen]);
+  }, [handleOutsideClick, isOpen]);
 
   if (!isOpen) return null;
 
   return (
-    <div className={`modal-overlay ${className}`}>
-      <div className="modal-box" ref={modalRef}>
+    <div className={ `modal-overlay ${className}` }>
+      <div className="modal-box" ref={ modalRef }>
         <div className="styled-container">
-          {children}
+          { children }
         </div>
       </div>
     </div>

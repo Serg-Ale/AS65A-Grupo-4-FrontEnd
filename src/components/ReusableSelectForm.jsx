@@ -1,41 +1,41 @@
 import PropTypes from "prop-types";
 
-const ReusableSelectForm = ({formConfig,formData,handleInputChange,handleSubmit,title}) => {
+const ReusableSelectForm = ({ formConfig, formData, handleInputChange, handleSubmit, title }) => {
   return (
     <div>
-      <h2>{title}</h2>
-      <form onSubmit={handleSubmit}>
-        {formConfig.map(({label,name,type,placeholder,options,required}) => (
-          <div key={name} className="input-group">
-            <label htmlFor={name}>{label}</label>
-            {type === "select" ? ( // Verifica se o tipo é "select"
+      <h2>{ title }</h2>
+      <form onSubmit={ handleSubmit }>
+        { formConfig.map(({ label, name, type, placeholder, options, required }) => (
+          <div key={ name } className="input-group">
+            <label htmlFor={ name }>{ label }</label>
+            { type === "select" ? ( // Verifica se o tipo é "select"
               <select
-                id={name}
-                name={name}
-                value={formData[name] || ""}
-                onChange={handleInputChange}
-                required={required}
+                id={ name }
+                name={ name }
+                value={ formData[name] || "" }
+                onChange={ handleInputChange }
+                required={ required }
               >
-                <option value="">{placeholder}</option> {/* Placeholder como primeira opção */}
-                {options.map((option,index) => (
-                  <option key={index} value={option}>
-                    {option}
+                <option value="">{ placeholder }</option> {/* Placeholder como primeira opção */ }
+                { options.map((option, index) => (
+                  <option key={ index } value={ option }>
+                    { option }
                   </option>
-                ))}
+                )) }
               </select>
             ) : (
               <input
-                id={name}
-                name={name}
-                type={type}
-                value={formData[name] || ""}
-                onChange={handleInputChange}
-                placeholder={placeholder}
-                required={required}
+                  id={ name }
+                  name={ name }
+                  type={ type }
+                  value={ formData[name] || "" }
+                  onChange={ handleInputChange }
+                  placeholder={ placeholder }
+                  required={ required }
               />
-            )}
+            ) }
           </div>
-        ))}
+        )) }
         <button type="submit"><img src="/public/images/favicon-white.png" alt="" /></button>
       </form>
     </div>

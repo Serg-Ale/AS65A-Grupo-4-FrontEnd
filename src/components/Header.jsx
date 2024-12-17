@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Header = ({setAction}) => {
+const Header = ({ setAction }) => {
   return (
     <>
       <header>
@@ -17,10 +17,10 @@ const Header = ({setAction}) => {
           <div className="action">
             <a
               className="button"
-              onClick={(e) => {
+              onClick={ (e) => {
                 e.preventDefault(); // Previne comportamento padrão de redirecionamento
                 setAction("login-modal"); // Mostra o modal
-              }}
+              } }
             >
               Entrar <i className="fi fi-rr-arrow-small-right"></i>
             </a>
@@ -44,10 +44,10 @@ const Header = ({setAction}) => {
             <a
               href="#open-login"
               className="button alt"
-              onClick={(e) => {
+              onClick={ (e) => {
                 e.preventDefault(); // Previne comportamento padrão de redirecionamento
                 setAction("login-modal"); // Mostra o modal
-              }}
+              } }
             >
               entrar <i className="fi fi-rr-arrow-small-right"></i>
             </a>

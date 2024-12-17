@@ -1,20 +1,20 @@
-import {updateData} from '../api/api.js';
+import { updateData } from '../api/api.js';
 import PropTypes from 'prop-types';
 import useFormHandler from '../hooks/useFormHandler.js';
 import ReusableForm from './ReusableForm.jsx';
 import Modal from './Modal.jsx';
 
-const EditStorageModal = ({id_produto,nome,categoria,isOpen,onClose,fetchProducts}) => {
+const EditStorageModal = ({ id_produto, nome, categoria, isOpen, onClose, fetchProducts }) => {
   const initialState = {
     nome,
     categoria
   };
 
-  const {formData,handleInputChange,handleSubmit} = useFormHandler(
+  const { formData, handleInputChange, handleSubmit } = useFormHandler(
     initialState,
     async (data) => {
-      console.log("Submitting form data:",data);
-      await updateData(`http://localhost:3001/produto/${id_produto}`,data);
+      console.log("Submitting form data:", data);
+      await updateData(`http://localhost:3001/produto/${id_produto}`, data);
       onClose();
       fetchProducts();
     }
@@ -36,13 +36,13 @@ const EditStorageModal = ({id_produto,nome,categoria,isOpen,onClose,fetchProduct
   ];
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={ isOpen } onClose={ onClose }>
       <ReusableForm
         title="Editar Produto"
-        formConfig={formConfig}
-        formData={formData}
-        handleInputChange={handleInputChange}
-        handleSubmit={handleSubmit}
+        formConfig={ formConfig }
+        formData={ formData }
+        handleInputChange={ handleInputChange }
+        handleSubmit={ handleSubmit }
       />
     </Modal>
   );

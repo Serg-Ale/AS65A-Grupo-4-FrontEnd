@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import EditAdminModal from './EditAdminModal.jsx';
-import {useState} from 'react';
+import { useState } from 'react';
 
-const AdministrationItem = ({nome,fetchAdministrators}) => {
-  const [action,setAction] = useState("");
+const AdministrationItem = ({ nome, fetchAdministrators }) => {
+  const [action, setAction] = useState("");
 
   return (
     <>
@@ -13,32 +13,32 @@ const AdministrationItem = ({nome,fetchAdministrators}) => {
             <i className="fi fi-rr-circle-user"></i>
           </div>
           <div className="info">
-            <h3>{nome}</h3>
+            <h3>{ nome }</h3>
             <div className="password">
               <span>*********</span>
               <button >
                 <i id="eye-opened" className="fi fi-rr-eye"></i>
-                {/* <i id="eye-closed" className="fi fi-rr-eye-crossed"></i> */}
+                {/* <i id="eye-closed" className="fi fi-rr-eye-crossed"></i> */ }
               </button>
             </div>
           </div>
         </div>
         <div className="end">
-          <button onClick={(e) => {
+          <button onClick={ (e) => {
             e.preventDefault();
             setAction("edit-admin-modal");
-          }}>
+          } }>
             <i className="fi fi-rr-pen-field"></i>
           </button>
         </div>
         <EditAdminModal
-          isOpen={action === "edit-admin-modal"}
-          nome={nome}
-          onClose={() => {
+          isOpen={ action === "edit-admin-modal" }
+          nome={ nome }
+          onClose={ () => {
             console.log("Closing modal...");
             setAction("");
-          }}
-          fetchAdministrators={fetchAdministrators}
+          } }
+          fetchAdministrators={ fetchAdministrators }
         />
       </div>
     </>

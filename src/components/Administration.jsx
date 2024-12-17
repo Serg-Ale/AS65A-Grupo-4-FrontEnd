@@ -1,17 +1,17 @@
-import {useEffect,useState} from "react";
+import { useEffect, useState } from "react";
 import AdministrationItem from "./AdministrationItem.jsx";
 import ParticipantItem from "./ParticipantItem.jsx";
-import {fetchData} from "../api/api.js";
+import { fetchData } from "../api/api.js";
 import AddAdminModal from "./AddAdminModal.jsx";
 import AddParticipantModal from "./AddParticipantModal.jsx";
 
 
 const Administration = () => {
-  const [administrators,setAdministrators] = useState([]);
-  const [participants,setParticipants] = useState([]);
-  const [loading,setLoading] = useState(true);
-  const [adminAction,setAdminAction] = useState("");
-  const [participantAction,setParticipantAction] = useState("");
+  const [administrators, setAdministrators] = useState([]);
+  const [participants, setParticipants] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [adminAction, setAdminAction] = useState("");
+  const [participantAction, setParticipantAction] = useState("");
 
   // Função para buscar administradores
   const fetchAdministrators = async () => {
@@ -40,7 +40,7 @@ const Administration = () => {
   useEffect(() => {
     fetchAdministrators();
     fetchParticipants();
-  },[]);
+  }, []);
 
   return (
     <div className="grid-separe">
@@ -50,7 +50,7 @@ const Administration = () => {
           <p>Adicione e gerencie os usuários da plataforma.</p>
         </div>
         <div className="user-list">
-          <div className="item create" onClick={() => setAdminAction("add-administrator-modal")}>
+          <div className="item create" onClick={ () => setAdminAction("add-administrator-modal") }>
             <div className="start">
               <div className="icon">
                 <i className="fi fi-rr-circle-user"></i>
@@ -66,23 +66,23 @@ const Administration = () => {
             </div>
           </div>
           <AddAdminModal
-            isOpen={adminAction === "add-administrator-modal"}
-            onClose={() => setAdminAction("")}
-            fetchAdministrators={fetchAdministrators}
+            isOpen={ adminAction === "add-administrator-modal" }
+            onClose={ () => setAdminAction("") }
+            fetchAdministrators={ fetchAdministrators }
           />
-          {loading ? (
+          { loading ? (
             <p>Carregando...</p>
           ) : administrators.length > 0 ? (
             administrators.map((admin) => (
               <AdministrationItem
-                key={admin.id_usuario}
-                nome={admin.nome}
-                fetchAdministrators={fetchAdministrators}
+                key={ admin.id_usuario }
+                nome={ admin.nome }
+                fetchAdministrators={ fetchAdministrators }
               />
             ))
           ) : (
             <p>Nenhum administrador encontrado.</p>
-          )}
+          ) }
         </div>
       </div>
       <div id="participants" className="main-container">
@@ -91,7 +91,7 @@ const Administration = () => {
           <p>Crie e controle doadores e beneficiários de doações.</p>
         </div>
         <div className="participants-list">
-          <div className="item create" onClick={() => setParticipantAction("add-participant-modal")}>
+          <div className="item create" onClick={ () => setParticipantAction("add-participant-modal") }>
             <div className="start">
               <div className="icon">
                 <i className="fi fi-rr-map-marker-home"></i>
@@ -107,24 +107,24 @@ const Administration = () => {
             </div>
           </div>
           <AddParticipantModal
-            isOpen={participantAction === "add-participant-modal"}
-            onClose={() => setParticipantAction("")}
-            fetchParticipants={fetchParticipants}
+            isOpen={ participantAction === "add-participant-modal" }
+            onClose={ () => setParticipantAction("") }
+            fetchParticipants={ fetchParticipants }
           />
-          {loading ? (
+          { loading ? (
             <p>Carregando...</p>
           ) : participants.length > 0 ? (
             participants.map((participant) => (
               <ParticipantItem
-                key={participant.id}
-                nome={participant.nome}
-                endereco={participant.endereco}
-                contato={participant.contato}
+                key={ participant.id }
+                nome={ participant.nome }
+                endereco={ participant.endereco }
+                contato={ participant.contato }
               />
             ))
           ) : (
             <p>Nenhum participante encontrado.</p>
-          )}
+          ) }
         </div>
       </div>
     </div>

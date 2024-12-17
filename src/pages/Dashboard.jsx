@@ -1,4 +1,4 @@
-import {Outlet} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Aside from "../components/Aside.jsx";
 import MainHeader from "../components/MainHeader.jsx";
 
@@ -11,7 +11,7 @@ const Dashboard = () => {
         <div className="content">
           <Aside />
           <div className="content-area">
-            {/* Exibe o conteúdo conforme a rota */}
+            {/* Exibe o conteúdo conforme a rota */ }
             <Outlet />
           </div>
         </div>

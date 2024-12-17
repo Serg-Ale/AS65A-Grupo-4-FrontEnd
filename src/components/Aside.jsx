@@ -1,4 +1,4 @@
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Aside = () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ const Aside = () => {
   return (
     <aside>
       <div className="list">
-        <button className="item" onClick={() => handleNavigation('storage')}>
+        <button className="item" onClick={ () => handleNavigation('storage') }>
           <div className="title">
             <h3>Estoque</h3>
             <span>
@@ -20,7 +20,7 @@ const Aside = () => {
           </div>
           <i className="fi fi-rr-box-circle-check"></i>
         </button>
-        <button className="item" onClick={() => handleNavigation('orders')}>
+        <button className="item" onClick={ () => handleNavigation('orders') }>
           <div className="title">
             <h3>Movimentações</h3>
             <span>
@@ -30,7 +30,7 @@ const Aside = () => {
           </div>
           <i className="fi fi-rr-exchange"></i>
         </button>
-        <button className="item" onClick={() => handleNavigation('administration')}>
+        <button className="item" onClick={ () => handleNavigation('administration') }>
           <div className="title">
             <h3>Administração</h3>
             <span>

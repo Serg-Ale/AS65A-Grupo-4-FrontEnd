@@ -1,31 +1,31 @@
 import PropTypes from "prop-types";
 
-const ReusableForm = ({title,formConfig,formData,handleInputChange,handleSubmit}) => {
+const ReusableForm = ({ title, formConfig, formData, handleInputChange, handleSubmit }) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>{title}</h2>
-      {formConfig.map(({label,name,type,placeholder,required}) => (
-        <div key={name}>
-          <label htmlFor={name}>{label}</label>
+    <form onSubmit={ handleSubmit }>
+      <h2>{ title }</h2>
+      { formConfig.map(({ label, name, type, placeholder, required }) => (
+        <div key={ name }>
+          <label htmlFor={ name }>{ label }</label>
           <input
-            id={name}
-            name={name}
-            type={type}
-            placeholder={type !== "checkbox" ? placeholder : undefined}
-            value={type === "checkbox" ? undefined : formData[name] || ""}
-            checked={type === "checkbox" ? formData[name] : undefined}
-            onChange={(e) => {
+            id={ name }
+            name={ name }
+            type={ type }
+            placeholder={ type !== "checkbox" ? placeholder : undefined }
+            value={ type === "checkbox" ? undefined : formData[name] || "" }
+            checked={ type === "checkbox" ? formData[name] : undefined }
+            onChange={ (e) => {
               handleInputChange({
                 target: {
                   name: e.target.name,
                   value: type === "checkbox" ? e.target.checked : e.target.value,
                 },
               });
-            }}
-            required={required}
+            } }
+            required={ required }
           />
         </div>
-      ))}
+      )) }
       <button type="submit"><img src="/public/images/favicon-white.png" alt="" /></button>
     </form>
   );

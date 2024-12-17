@@ -1,6 +1,5 @@
 const MainHeader = () => {
   return (
-
     <header>
       <div className="content">
         <div className="logo">
