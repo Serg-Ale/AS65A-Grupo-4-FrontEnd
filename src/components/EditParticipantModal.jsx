@@ -46,7 +46,7 @@ const EditParticipantModal = ({ isOpen, onClose, fetchParticipants }) => {
   return (
     <Modal isOpen={ isOpen } onClose={ onClose }>
       <ReusableForm
-        title="Editar Produto"
+        title="Editar Intuição"
         formConfig={ formConfig }
         formData={ formData }
         handleInputChange={ handleInputChange }

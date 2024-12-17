@@ -10,9 +10,12 @@ const AddOrderModal = ({ isOpen, onClose, fetchOrders }) => {
   const [participantes, setParticipantes] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const responsavel = localStorage.getItem("usuario");
+
   const initialState = {
     produto: "",
     categoria: "",
+    responsavel,
     quantidade: 0,
   };
 
@@ -41,7 +44,6 @@ const AddOrderModal = ({ isOpen, onClose, fetchOrders }) => {
   );
 
 
-  const responsavel = localStorage.getItem("usuario");
 
 
   useEffect(() => {
