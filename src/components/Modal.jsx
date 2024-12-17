@@ -34,7 +34,9 @@ const Modal = ({
   return (
     <div className={`modal-overlay ${className}`}>
       <div className="modal-box" ref={modalRef}>
-        {children}
+        <div className="styled-container">
+          {children}
+        </div>
       </div>
     </div>
   );

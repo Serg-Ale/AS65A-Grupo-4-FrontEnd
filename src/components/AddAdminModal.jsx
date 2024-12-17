@@ -40,15 +40,13 @@ const AddAdminModal = ({ isOpen, onClose, fetchAdministrators }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="styled-container">
         <ReusableForm
           title="Adicionar Novo Administrador"
           formConfig={formConfig}
           formData={formData}
           handleInputChange={handleInputChange}
           handleSubmit={handleSubmit}
-        />
-      </div>
+      />
     </Modal>
   );
 };

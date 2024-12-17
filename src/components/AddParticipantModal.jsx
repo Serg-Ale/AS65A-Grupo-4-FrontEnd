@@ -1,10 +1,10 @@
-import { createData } from "../api/api.js";
+import {createData} from "../api/api.js";
 import PropTypes from "prop-types";
 import useFormHandler from "../hooks/useFormHandler.js";
 import ReusableForm from "./ReusableForm.jsx";
 import Modal from "./Modal.jsx";
 
-const AddParticipantModal = ({ isOpen, onClose, fetchParticipants }) => {
+const AddParticipantModal = ({isOpen,onClose,fetchParticipants}) => {
   // Estado inicial refletindo o objeto esperado
   const initialState = {
     anonimo: false, // Checkbox boolean
@@ -13,11 +13,11 @@ const AddParticipantModal = ({ isOpen, onClose, fetchParticipants }) => {
     contato: "",
   };
 
-  const { formData, handleInputChange, handleSubmit } = useFormHandler(
+  const {formData,handleInputChange,handleSubmit} = useFormHandler(
     initialState,
     async (data) => {
-      console.log("Submitting participant data:", data);
-      await createData(`http://localhost:3001/participante`, data);
+      console.log("Submitting participant data:",data);
+      await createData(`http://localhost:3001/participante`,data);
       onClose(); // Fecha o modal
       fetchParticipants(); // Atualiza a lista de participantes
     }
@@ -56,15 +56,13 @@ const AddParticipantModal = ({ isOpen, onClose, fetchParticipants }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="styled-container">
-        <ReusableForm
-          title="Adicionar Participante"
-          formConfig={formConfig}
-          formData={formData}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-        />
-      </div>
+      <ReusableForm
+        title="Adicionar Participante"
+        formConfig={formConfig}
+        formData={formData}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+      />
     </Modal>
   );
 };
