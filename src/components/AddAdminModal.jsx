@@ -1,27 +1,25 @@
-
 import PropTypes from "prop-types";
-import useFormHandler from '../hooks/useFormHandler.js';
-import {createData} from '../api/api.js';
-import ReusableForm from './ReusableForm.jsx';
-import Modal from './Modal.jsx';
+import useFormHandler from "../hooks/useFormHandler.js";
+import { createData } from "../api/api.js";
+import ReusableForm from "./ReusableForm.jsx";
+import Modal from "./Modal.jsx";
 
-const AddAdminModal = ({isOpen,onClose,fetchAdministrators}) => {
+const AddAdminModal = ({ isOpen, onClose, fetchAdministrators }) => {
   const initialState = {
     nome: "",
     senha: "",
     tipo_acesso: "admin",
   };
 
-  const {formData,handleInputChange,handleSubmit} = useFormHandler(
+  const { formData, handleInputChange, handleSubmit } = useFormHandler(
     initialState,
     async (data) => {
-      console.log("Submitting form data:",data);
-      await createData("http://localhost:3001/register",data);
+      console.log("Submitting form data:", data);
+      await createData("http://localhost:3001/register", data);
       onClose();
       fetchAdministrators();
-    },
+    }
   );
-
 
   const formConfig = [
     {
@@ -29,26 +27,28 @@ const AddAdminModal = ({isOpen,onClose,fetchAdministrators}) => {
       name: "nome",
       type: "text",
       placeholder: "Digite o nome do administrador",
-      required: true
+      required: true,
     },
     {
       label: "Senha",
       name: "senha",
       type: "password",
       placeholder: "Digite a senha",
-      required: true
+      required: true,
     },
   ];
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} >
-      <ReusableForm
-        title="Adicionar Novo Administrador"
-        formConfig={formConfig}
-        formData={formData}
-        handleInputChange={handleInputChange}
-        handleSubmit={handleSubmit}
-      />
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <div className="styled-container">
+        <ReusableForm
+          title="Adicionar Novo Administrador"
+          formConfig={formConfig}
+          formData={formData}
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmit}
+        />
+      </div>
     </Modal>
   );
 };

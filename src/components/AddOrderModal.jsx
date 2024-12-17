@@ -1,14 +1,14 @@
-import {useEffect,useState} from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import {createData,fetchData} from "../api/api.js";
-import useFormHandler from '../hooks/useFormHandler.js';
-import ReusableSelectForm from './ReusableSelectForm.jsx';
+import { createData, fetchData } from "../api/api.js";
+import useFormHandler from "../hooks/useFormHandler.js";
+import ReusableSelectForm from "./ReusableSelectForm.jsx";
 import Modal from "./Modal.jsx";
 
-const AddOrderModal = ({isOpen,onClose,fetchOrders}) => {
-  const [products,setProducts] = useState([]);
-  const [categories,setCategories] = useState([]);
-  const [loading,setLoading] = useState(true);
+const AddOrderModal = ({ isOpen, onClose, fetchOrders }) => {
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const initialState = {
     produto: "",
@@ -16,11 +16,11 @@ const AddOrderModal = ({isOpen,onClose,fetchOrders}) => {
     quantidade: 0,
   };
 
-  const {formData,handleInputChange,handleSubmit} = useFormHandler(
+  const { formData, handleInputChange, handleSubmit } = useFormHandler(
     initialState,
     async (data) => {
-      console.log("Submitting form data:",data);
-      await createData("http://localhost:3001/movimentacoes",data);
+      console.log("Submitting form data:", data);
+      await createData("http://localhost:3001/movimentacoes", data);
       onClose();
       fetchOrders();
     }
@@ -37,7 +37,7 @@ const AddOrderModal = ({isOpen,onClose,fetchOrders}) => {
     };
 
     fetchProductsAndCategories();
-  },[]);
+  }, []);
 
   const formConfig = [
     {
@@ -71,13 +71,15 @@ const AddOrderModal = ({isOpen,onClose,fetchOrders}) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <ReusableSelectForm
-        title="Adicionar Movimentação"
-        formConfig={formConfig}
-        formData={formData}
-        handleInputChange={handleInputChange}
-        handleSubmit={handleSubmit}
-      />
+      <div className="styled-container">
+        <ReusableSelectForm
+          title="Adicionar Movimentação"
+          formConfig={formConfig}
+          formData={formData}
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmit}
+        />
+      </div>
     </Modal>
   );
 };

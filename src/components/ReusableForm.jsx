@@ -26,7 +26,7 @@ const ReusableForm = ({title,formConfig,formData,handleInputChange,handleSubmit}
           />
         </div>
       ))}
-      <button type="submit">Salvar</button>
+      <button type="submit"><img src="/public/images/favicon-white.png" alt="" /></button>
     </form>
   );
 };

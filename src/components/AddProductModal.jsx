@@ -1,20 +1,20 @@
 import PropTypes from "prop-types";
-import {createData} from '../api/api.js';
-import useFormHandler from '../hooks/useFormHandler.js';
+import { createData } from "../api/api.js";
+import useFormHandler from "../hooks/useFormHandler.js";
 import Modal from "./Modal.jsx";
-import ReusableForm from './ReusableForm.jsx';
+import ReusableForm from "./ReusableForm.jsx";
 
-const AddProductModal = ({isOpen,onClose,fetchProducts}) => {
+const AddProductModal = ({ isOpen, onClose, fetchProducts }) => {
   const initialState = {
     nome: "",
     categoria: "",
   };
 
-  const {formData,handleInputChange,handleSubmit} = useFormHandler(
+  const { formData, handleInputChange, handleSubmit } = useFormHandler(
     initialState,
     async (data) => {
-      console.log("Submitting form data:",data);
-      await createData("http://localhost:3001/produto",data);
+      console.log("Submitting form data:", data);
+      await createData("http://localhost:3001/produto", data);
       onClose(); // Fecha o modal
       fetchProducts();
     }
@@ -39,13 +39,15 @@ const AddProductModal = ({isOpen,onClose,fetchProducts}) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <ReusableForm
-        title="Adicionar Produto"
-        formConfig={formConfig}
-        formData={formData}
-        handleInputChange={handleInputChange}
-        handleSubmit={handleSubmit}
-      />
+      <div className="styled-container">
+        <ReusableForm
+          title="Adicionar Produto"
+          formConfig={formConfig}
+          formData={formData}
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmit}
+        />
+      </div>
     </Modal>
   );
 };
