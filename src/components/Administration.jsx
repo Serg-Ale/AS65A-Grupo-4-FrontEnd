@@ -2,13 +2,16 @@ import {useEffect,useState} from "react";
 import AdministrationItem from "./AdministrationItem.jsx";
 import ParticipantItem from "./ParticipantItem.jsx";
 import {fetchData} from "../api/api.js";
-import PropTypes from "prop-types";
 import AddAdminModal from "./AddAdminModal.jsx";
+import AddParticipantModal from "./AddParticipantModal.jsx";
 
-const Administration = ({openModal}) => {
+
+const Administration = () => {
   const [administrators,setAdministrators] = useState([]);
+  const [participants,setParticipants] = useState([]);
   const [loading,setLoading] = useState(true);
-  const [action,setAction] = useState("");
+  const [adminAction,setAdminAction] = useState("");
+  const [participantAction,setParticipantAction] = useState("");
 
   // Função para buscar administradores
   const fetchAdministrators = async () => {
@@ -21,11 +24,23 @@ const Administration = ({openModal}) => {
     setLoading(false);
   };
 
-  // Hook para executar a busca quando o componente for montado
+  // Função para buscar participantes
+  const fetchParticipants = async () => {
+    const data = await fetchData("http://localhost:3001/participante");
+    console.log(data);
+
+    if (data) {
+      setParticipants(data);
+    }
+
+    setLoading(false);
+  };
+
+  // Hook para executar as buscas quando o componente for montado
   useEffect(() => {
     fetchAdministrators();
+    fetchParticipants();
   },[]);
-
 
   return (
     <div className="grid-separe">
@@ -35,10 +50,7 @@ const Administration = ({openModal}) => {
           <p>Adicione e gerencie os usuários da plataforma.</p>
         </div>
         <div className="user-list">
-          <div className="item create" onClick={(e) => {
-            e.preventDefault();
-            setAction("add-administrator-modal");
-          }}>
+          <div className="item create" onClick={() => setAdminAction("add-administrator-modal")}>
             <div className="start">
               <div className="icon">
                 <i className="fi fi-rr-circle-user"></i>
@@ -54,10 +66,8 @@ const Administration = ({openModal}) => {
             </div>
           </div>
           <AddAdminModal
-            isOpen={action === "add-administrator-modal"} onClose={() => {
-              console.log("Closing modal....");
-              setAction("");
-            }}
+            isOpen={adminAction === "add-administrator-modal"}
+            onClose={() => setAdminAction("")}
             fetchAdministrators={fetchAdministrators}
           />
           {loading ? (
@@ -67,7 +77,7 @@ const Administration = ({openModal}) => {
               <AdministrationItem
                 key={admin.id_usuario}
                 nome={admin.nome}
-                openModal={openModal}
+                fetchAdministrators={fetchAdministrators}
               />
             ))
           ) : (
@@ -81,7 +91,7 @@ const Administration = ({openModal}) => {
           <p>Crie e controle doadores e beneficiários de doações.</p>
         </div>
         <div className="participants-list">
-          <div className="item create">
+          <div className="item create" onClick={() => setParticipantAction("add-participant-modal")}>
             <div className="start">
               <div className="icon">
                 <i className="fi fi-rr-map-marker-home"></i>
@@ -96,17 +106,29 @@ const Administration = ({openModal}) => {
               </button>
             </div>
           </div>
-          <ParticipantItem />
-          <ParticipantItem />
-          <ParticipantItem />
+          <AddParticipantModal
+            isOpen={participantAction === "add-participant-modal"}
+            onClose={() => setParticipantAction("")}
+            fetchParticipants={fetchParticipants}
+          />
+          {loading ? (
+            <p>Carregando...</p>
+          ) : participants.length > 0 ? (
+            participants.map((participant) => (
+              <ParticipantItem
+                key={participant.id}
+                nome={participant.nome}
+                endereco={participant.endereco}
+                contato={participant.contato}
+              />
+            ))
+          ) : (
+            <p>Nenhum participante encontrado.</p>
+          )}
         </div>
       </div>
     </div>
   );
-};
-
-Administration.propTypes = {
-  openModal: PropTypes.func.isRequired, // Passando a função openModal para o componente
 };
 
 export default Administration;

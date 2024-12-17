@@ -1,37 +1,36 @@
 import PropTypes from "prop-types";
 
-const ReusableForm = ({
-  formConfig,
-  formData,
-  handleInputChange,
-  handleSubmit,
-  title,
-}) => {
+const ReusableForm = ({title,formConfig,formData,handleInputChange,handleSubmit}) => {
   return (
-    <div className="styled-container">
+    <form onSubmit={handleSubmit}>
       <h2>{title}</h2>
-      <form onSubmit={handleSubmit}>
-        {formConfig.map(({ label, name, type, placeholder, required }) => (
-          <div key={name} className="input-group">
-            <label htmlFor={name}>{label}</label>
-            <input
-              id={name}
-              name={name}
-              type={type}
-              value={formData[name] || ""}
-              onChange={handleInputChange}
-              placeholder={placeholder}
-              required={required}
-            />
-          </div>
-        ))}
-        <button type="submit">
-          <img src="/images/favicon-white.png" alt="Enviar" />
-        </button>
-      </form>
-    </div>
+      {formConfig.map(({label,name,type,placeholder,required}) => (
+        <div key={name}>
+          <label htmlFor={name}>{label}</label>
+          <input
+            id={name}
+            name={name}
+            type={type}
+            placeholder={type !== "checkbox" ? placeholder : undefined}
+            value={type === "checkbox" ? undefined : formData[name] || ""}
+            checked={type === "checkbox" ? formData[name] : undefined}
+            onChange={(e) => {
+              handleInputChange({
+                target: {
+                  name: e.target.name,
+                  value: type === "checkbox" ? e.target.checked : e.target.value,
+                },
+              });
+            }}
+            required={required}
+          />
+        </div>
+      ))}
+      <button type="submit">Salvar</button>
+    </form>
   );
 };
+
 
 ReusableForm.propTypes = {
   formConfig: PropTypes.arrayOf(

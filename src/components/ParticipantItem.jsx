@@ -1,46 +1,52 @@
 import PropTypes from "prop-types";
+import {useState} from "react";
+import EditParticipantModal from "./EditParticipantModal.jsx";
 
-const ParticipantItem = ({ nome, openModal }) => {
-  const handleEditClick = () => {
-    openModal(
-      <div>
-        <h3>Editar Participante: {nome}</h3>
-        <form>
-          <label>
-            Novo nome:
-            <input type="text" name="nome" defaultValue={nome} />
-          </label>
-          <button type="submit">Salvar</button>
-        </form>
-      </div>
-    );
-  };
+const ParticipantItem = ({id,nome,endereco,contato,fetchParticipants}) => {
+
+  const [action,setAction] = useState("");
   return (
-    <div className="item">
+    <div className="item" key={id}>
       <div className="start">
         <div className="icon">
           <i className="fi fi-rr-map-marker-home"></i>
         </div>
         <div className="info">
-          <h3>Colegio Estadual Exemplo</h3>
+          <h3>{nome}</h3>
           <div className="separe">
-            <strong>41 9 9999-9999</strong>
-            <p>Rua numero 00, Bairro X, Cornélio Procópio...</p>
+            <strong>{contato}</strong>
+            <p>{endereco}</p>
           </div>
         </div>
       </div>
       <div className="end">
-        <button onClick={handleEditClick}>
+        <button onClick={(e) => {
+          e.preventDefault();
+          setAction("edit-participant-modal");
+        }}>
           <i className="fi fi-rr-pen-field"></i>
         </button>
+        <EditParticipantModal
+          isOpen={action === "edit-participant-modal"}
+          nome={nome}
+          onClose={() => {
+            console.log("Closing modal...");
+            setAction("");
+          }}
+          fetchParticipants={fetchParticipants}
+        />
       </div>
+
     </div>
   );
 };
 
 ParticipantItem.propTypes = {
+  id: PropTypes.number.isRequired, // ID do participante (único)
   nome: PropTypes.string.isRequired,
-  openModal: PropTypes.func.isRequired,
+  endereco: PropTypes.string.isRequired,
+  contato: PropTypes.string.isRequired,
+  fetchParticipants: PropTypes.func.isRequired, // Função para recarregar os dados após edição
 };
 
 export default ParticipantItem;
