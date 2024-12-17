@@ -11,7 +11,7 @@ const AddParticipantModal = ({ isOpen, onClose, fetchParticipants }) => {
     nome: "",
     endereco: "",
     contato: "",
-  };
+  }
 
   const { formData, handleInputChange, handleSubmit } = useFormHandler(
     initialState,
