@@ -7,7 +7,7 @@ import Modal from "./Modal.jsx";
 
 const AddOrderModal = ({ isOpen, onClose, fetchOrders }) => {
   const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [participantes, setParticipantes] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const initialState = {
@@ -19,27 +19,65 @@ const AddOrderModal = ({ isOpen, onClose, fetchOrders }) => {
   const { formData, handleInputChange, handleSubmit } = useFormHandler(
     initialState,
     async (data) => {
-      console.log("Submitting form data:", data);
-      await createData("http://localhost:3001/movimentacoes", data);
-      onClose();
-      fetchOrders();
+      // Ajustando os campos antes de enviar a requisição
+      const payload = {
+        tipo_movimentacao: data.tipo_movimentacao,
+        quantidade: parseInt(data.quantidade, 10), // Garante que a quantidade seja um número inteiro
+        nome_responsavel: data.nome_responsavel,
+        nome_produto: data.produto, // Renomeando 'produto' para 'nome_produto'
+        nome_participante: data.nome_participante,
+      };
+
+      console.log("Submitting form data:", payload);
+
+      try {
+        await createData("http://localhost:3001/movimentacoes", payload);
+        onClose();
+        fetchOrders();
+      } catch (error) {
+        console.error("Erro ao criar movimentação:", error);
+      }
     }
   );
 
+
+  const responsavel = localStorage.getItem("usuario");
+
+
   useEffect(() => {
-    const fetchProductsAndCategories = async () => {
+    const fetchProducts = async () => {
       const data = await fetchData("http://localhost:3001/produto");
       if (data) {
         setProducts(data.map((product) => product.nome));
-        setCategories([...new Set(data.map((product) => product.categoria))]);
       }
       setLoading(false);
     };
 
-    fetchProductsAndCategories();
+
+    const fetchParticipantes = async () => {
+      const data = await fetchData("http://localhost:3001/participante");
+      if (data) {
+        setParticipantes(data.map((participante) => participante.nome));
+      }
+      setLoading(false);
+    };
+
+
+
+    fetchProducts();
+    fetchParticipantes();
   }, []);
 
   const formConfig = [
+
+    {
+      label: "Tipo de Movimentação",
+      name: "tipo_movimentacao",
+      type: "select",
+      options: ["entrada", "saida"],
+      placeholder: "Selecione um tipo de movimentação",
+      required: true,
+    },
     {
       label: "Produto",
       name: "produto",
@@ -49,11 +87,19 @@ const AddOrderModal = ({ isOpen, onClose, fetchOrders }) => {
       required: true,
     },
     {
-      label: "Categoria",
-      name: "categoria",
+      label: "Instituição",
+      name: "nome_participante",
       type: "select",
-      options: categories,
-      placeholder: "Selecione uma categoria",
+      options: participantes,
+      placeholder: "Selecione uma instituição",
+      required: true,
+    },
+    {
+      label: "Responsável",
+      name: "nome_responsavel",
+      type: "select",
+      options: [responsavel],
+      placeholder: responsavel,
       required: true,
     },
     {
@@ -70,13 +116,13 @@ const AddOrderModal = ({ isOpen, onClose, fetchOrders }) => {
   }
 
   return (
-    <Modal isOpen={ isOpen } onClose={ onClose }>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <ReusableSelectForm
         title="Adicionar Movimentação"
-        formConfig={ formConfig }
-        formData={ formData }
-        handleInputChange={ handleInputChange }
-        handleSubmit={ handleSubmit }
+        formConfig={formConfig}
+        formData={formData}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
       />
     </Modal>
   );
