@@ -3,7 +3,7 @@ const MainHeader = () => {
     <header>
       <div className="content">
         <div className="logo">
-          <img src="./public/images/logo-white.png" alt="" />
+          <img src="/public/images/logo-white.png" alt="" />
         </div>
         <div className="title">
           <h1>Dashboard</h1>

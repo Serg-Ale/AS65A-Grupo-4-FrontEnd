@@ -108,13 +108,13 @@
               align-items: center;
               outline: none;
               width: fit-content;
-              height: 64px;
-              width: 160px;
-              border-radius: 16px;
-              border: none;
-              background-color: var(--primary);
-              transition: all 300ms ease-in;
-              margin-left: auto;
+              height: 64px !important;
+              width: 160px !important;
+              border-radius: 16px !important;
+              border: none !important;
+              background-color: var(--primary) !important;
+              transition: all 300ms ease-in !important;
+              margin-left: auto !important;
           
               img {
                 height: 40px;
