@@ -24,15 +24,6 @@ const Hero = () => {
               podemos quebrar barreiras e reduzir desigualdades.
               <br />
               <br />
-              O Bons Fluidos é movido por uma rede de voluntários, doadores e
-              parceiros que compartilham a visão de um mundo mais justo e
-              acolhedor. Por meio de campanhas de arrecadação, eventos
-              educativos e parcerias com organizações locais, buscamos não
-              apenas entregar itens essenciais, mas também conscientizar sobre a
-              importância da saúde menstrual e combater o estigma que ainda
-              cerca o tema.
-              <br />
-              <br />
               Cada absorvente doado é mais do que um gesto de empatia; é um
               passo em direção à transformação social. Convidamos você a fazer
               parte desse movimento e ajudar a espalhar bons fluidos pelo mundo.
