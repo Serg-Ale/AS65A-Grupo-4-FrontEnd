@@ -1,0 +1,37 @@
+.donate {
+  background-image: radial-gradient(75% 75% at 110% 152%, #F4CFD9FF 0%, #FFFFFF00 100%),linear-gradient(145deg, #f7a4ae 0%, #bb3c5a 55%);background-image: radial-gradient(75% 75% at 110% 152%, #F4CFD9FF 0%, #FFFFFF00 100%),linear-gradient(145deg, #D25E69FF 0%, #bb3c5a 70%);
+  padding: 3rem 0;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+
+    .title {
+      text-align: center;
+
+      h2 {
+        font-size: 3.5rem;
+        color: var(--white);
+        margin: 0;
+        margin-bottom: 1rem;
+
+        @media all and (max-width: 999px) {
+            font-size: 1.8rem;
+        }
+      }
+
+      p {
+        margin: 0;
+        font-size: 1.4rem;
+        color: var(--white);
+      }
+    }
+
+    .action {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

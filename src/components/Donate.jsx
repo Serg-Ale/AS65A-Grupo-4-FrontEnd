@@ -1,42 +1,20 @@
-const Footer = () => {
+const Donate = () => {
   return (
     <>
-      <a name="contact"></a>
-      <footer>
+      <a name="donate"></a>
+      <div className="donate">
         <div className="content">
-          <div className="top">
-            <nav>
-              <strong>Navegação</strong>
-              <a href="./">Início</a>
-              <a href="#contato">Contato</a>
-              <a href="#sobre">Sobre</a>
-            </nav>
-            <nav>
-              <strong>Contate-nos</strong>
-              <a href="" className="social-item">
-                <i className="fi fi-brands-instagram"></i>
-                <span>Instagram</span>
-              </a>
-              <a href="" className="social-item">
-                <i className="fi fi-brands-twitter-alt"></i>
-                <span>Twitter</span>
-              </a>
-              <a href="" className="social-item">
-                <i className="fi fi-brands-whatsapp"></i>
-                <span>Whatsapp</span>
-              </a>
-            </nav>
-            <div className="logo">
-              <img src="/public/images/logo.png" alt="" />
-            </div>
+          <div className="title">
+            <h2>Quer doar?</h2>
+            <p>Sua ajuda faz grande diferença em nossa comunidade!</p>
           </div>
-          <div className="bottom">
-            <span>© Copyright Bons Fluidos - 2024</span>
+          <div className="action">
+            <a href="https://api.whatsapp.com" className="button alt">Falar com a bons fluidos agora <i className="fi fi-rr-arrow-small-right"></i></a>
           </div>
         </div>
-      </footer>
+      </div>
     </>
   );
 };
 
-export default Footer;
+export default Donate;

@@ -1,5 +1,4 @@
 footer {
-  border-top: 2px solid var(--secondary);
   background-color: rgb(240, 240, 240);
 
   .content {
@@ -8,7 +7,7 @@ footer {
     justify-content: center;
 
     .top {
-      padding: 2rem;
+      padding: 2rem 0;
       width: 100%;
       display: flex;
       justify-content: space-between;
@@ -16,7 +15,7 @@ footer {
       @media all and (max-width: 599px) {
         flex-direction: column;
         gap: 2rem;
-    }
+      }
 
       .logo {
         max-width: 200px;
@@ -59,8 +58,7 @@ footer {
 
     .bottom {
       width: 100%;
-      padding: 2rem;
-      padding-top: 0;
+      padding-bottom: 2rem;
       display: flex;
       justify-content: flex-end;
       color: var(--black);
