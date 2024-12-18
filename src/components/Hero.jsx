@@ -14,12 +14,12 @@ const Hero = () => {
             Dignidade para cada período
           </h1>
           <p>
-            O Projeto Bons Fluidos mobiliza doações de absorventes para combater
+            O Projeto bons fluidos mobiliza doações de absorventes para combater
             a pobreza menstrual e apoiar quem mais precisa.
           </p>
           <a href="#" className="button alt">
             Ver mais <i className="fi fi-rr-arrow-small-right"></i>
-          </a>
+          </a><a name="about"></a>
         </div>
         <div className="image">
           <img src="/images/hero.png" alt="Hero" />
