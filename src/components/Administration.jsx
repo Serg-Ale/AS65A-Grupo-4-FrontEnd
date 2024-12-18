@@ -100,7 +100,7 @@ const Administration = () => {
                 <i className="fi fi-rr-map-marker-home"></i>
               </div>
               <div className="info">
-                <h3>Novo participante/instituição...</h3>
+                <h3>Novo participante ou instituição...</h3>
               </div>
             </div>
             <div className="end">

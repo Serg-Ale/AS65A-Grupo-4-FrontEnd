@@ -309,6 +309,10 @@ main.dashboard {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
+
+        @media all and (max-width: 1149px) {
+          grid-template-columns: repeat(1, 1fr);
+        }
       }
 
       .content-area {
@@ -465,11 +469,26 @@ main.dashboard {
   
               &.create {
                 align-items: center;
+
+                @media all and (max-width: 599px) {
+                  flex-direction: row-reverse;
+                }
+
+                h3 {
+                  @media all and (max-width: 1149px) {
+                    font-size: 1.5rem;
+                    text-align: left;
+                  }
+                }
   
                 .icon {
                   font-size: 80px;
                   color: var(--primary);
                   transition: all 300ms ease-in;
+
+                  @media all and (max-width: 1149px) {
+                    font-size: 32px;
+                  }
                 }
   
                 &:hover {
@@ -523,6 +542,10 @@ main.dashboard {
                     margin: 0;
                     font-size: 1.2rem;
                     color: var(--primary);
+
+                    @media all and (max-width: 1149px) {
+                      font-size: 1rem;
+                    }
                   }
   
                   .password {
@@ -558,6 +581,11 @@ main.dashboard {
                     gap: 0.5rem;
                     justify-content: center;
                     align-items: center;
+
+                    @media all and (max-width: 999px) {
+                      flex-direction: column;
+                      align-items: flex-start;
+                    }
                     
                     strong {
                       color: var(--primary);
