@@ -650,6 +650,10 @@ main.dashboard {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
+
+            @media all and (max-width: 1149px) {
+              grid-template-columns: repeat(1, 1fr);
+            }
   
             .item {
               width: 100%;
@@ -693,6 +697,14 @@ main.dashboard {
                     font-weight: 900;
                     font-size: 1.8rem;
                     margin-right: 2rem;
+                  }
+
+                  @media all and (max-width: 1149px) {
+                    width: 80px;
+
+                    strong {
+                      font-size: 1.4rem;
+                    }
                   }
                 }
   
@@ -744,7 +756,6 @@ main.dashboard {
                     color: var(--secondary);
                     border-radius: 30px;
   
-  
                   .label {
                     display: flex;
                     justify-content: center;
@@ -763,6 +774,16 @@ main.dashboard {
                     font-size: 1.2rem;
                     font-weight: 400;
                   }
+
+                  @media all and (max-width: 1149px) {
+                    strong {
+                      display: none;
+                    }
+
+                    .name {
+                      display: block;
+                    }
+                  }
                 }
               }
   
@@ -772,12 +793,21 @@ main.dashboard {
                 background-color: var(--secondary);
                 transition: all 300ms ease-in;
                 cursor: pointer;
+
+                @media all and (max-width: 1149px) {
+                  flex-direction: row;
+                }
   
                 h3 {
                   color: var(--primary);
                   margin: 0;
                   font-size: 2.4rem;
                   transition: all 300ms ease-in;
+
+                  @media all and (max-width: 1149px) {
+                    font-size: 1.5rem;
+                    text-align: left;
+                  }
                 }
   
                 i {
@@ -785,6 +815,10 @@ main.dashboard {
                   font-size: 80px;
                   color: var(--primary);
                   transition: all 300ms ease-in;
+
+                  @media all and (max-width: 1149px) {
+                    font-size: 32px;
+                  }
                 }
   
                 &:hover {
