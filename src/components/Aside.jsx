@@ -9,6 +9,7 @@ const Aside = () => {
 
   return (
     <aside>
+      <span className='label'>Navegue <i className="fi fi-rr-arrow-small-right"></i></span>
       <div className="list">
         <button className="item" onClick={ () => handleNavigation('storage') }>
           <div className="title">

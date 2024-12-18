@@ -19,12 +19,12 @@ const MainHeader = () => {
               <ul>
                 <li>
                   <a href="https://api.whatsapp.com">
-                    Suporte <i className="fi fi-rr-phone-flip"></i>
+                    <span>Suporte</span> <i className="fi fi-rr-phone-flip"></i>
                   </a>
                 </li>
                 <li>
                   <a href="">
-                    Sair <i className="fi fi-rr-exit"></i>
+                    <span>Sair</span> <i className="fi fi-rr-exit"></i>
                   </a>
                 </li>
               </ul>

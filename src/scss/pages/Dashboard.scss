@@ -32,6 +32,10 @@ main.dashboard {
         height: auto;
         text-decoration: none;
 
+        @media all and (max-width: 999px) {
+          display: none;
+        }
+
         img {
           height: 100%;
           width: auto;
@@ -44,12 +48,20 @@ main.dashboard {
           font-size: 2.8rem;
           text-transform: lowercase;
           margin: 0;
+
+          @media all and (max-width: 999px) {
+            font-size: 1.6rem;
+          }
         }
       }
 
       .action {
         height: 54px;
         position: relative; // Para posicionar o submenu corretamente
+
+        @media all and (max-width: 999px) {
+          display: flex;
+        }
 
         .button {
           position: relative;
@@ -58,6 +70,10 @@ main.dashboard {
           z-index: 10;
           border-radius: 30px;
           transition: all 300ms ease-in;
+
+          @media all and (max-width: 1149px) {
+            padding: 16px;
+          }
 
           #arrow-animate {
             transition: all 300ms ease-in;
@@ -82,6 +98,7 @@ main.dashboard {
               height: 100%;
               display: flex;
               flex-direction: column;
+              align-items: center;
               justify-content: space-around;
               margin: 0;
               padding: 0;
@@ -130,6 +147,12 @@ main.dashboard {
                 visibility 0ms;
             }
           }
+
+          @media all and (max-width: 1149px) {
+            span {
+              display: none;
+            }
+          }
         }
       }
     }
@@ -145,6 +168,10 @@ main.dashboard {
       gap: 2rem;
       height: fit-content;
 
+      @media all and (max-width: 999px) {
+        flex-direction: column;
+      }
+
       aside {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -155,12 +182,42 @@ main.dashboard {
         border-radius: 1rem;
         color: var(--white);
 
+        @media all and (max-width: 999px) {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          padding: 0;
+        }
+
+        .label {
+          display: none;
+          align-items: flex-end;
+          gap: 8px;
+          font-size: 1.2rem;
+          color: var(--primary);
+          font-weight: 500;
+
+          i {
+            display: inline-flex;
+          }
+
+          @media all and (max-width: 999px) {
+            display: flex;
+          }
+        }
+
         .list {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           gap: 2rem;
+
+          @media all and (max-width: 999px) {
+            flex-direction: row;
+            justify-content: flex-start;
+            gap: 1rem;
+          }
 
           .item {
             display: flex;
@@ -201,6 +258,10 @@ main.dashboard {
                 font-size: 0.8rem;
                 text-align: justify;
               }
+
+              @media all and (max-width: 999px) {
+                display: none;
+              }
             }
 
             i {
@@ -208,6 +269,10 @@ main.dashboard {
               display: inline-flex;
               color: var(--white);
               transition: all 300ms ease-in;
+
+              @media all and (max-width: 999px) {
+                font-size: 24px;
+              }
             }
 
             &:hover {
@@ -232,6 +297,10 @@ main.dashboard {
           text-align: center;
           font-size: 0.8rem;
           font-style: italic;
+
+          @media all and (max-width: 999px) {
+            display: none;
+          }
         }
       }
 
@@ -249,6 +318,10 @@ main.dashboard {
           height: 100%;
           width: 100%;
           padding: 2rem 0;
+
+          @media all and (max-width: 999px) {
+            padding-top: 0;
+          }
   
           .title {
             width: 100%;
@@ -260,6 +333,10 @@ main.dashboard {
               font-weight: 700;
               font-size: 2.4rem;
               margin-bottom: 0.5rem;
+
+              @media all and (max-width: 1149px) {
+                font-size: 1.6rem;
+              }
             }
   
             p {
@@ -274,6 +351,15 @@ main.dashboard {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
+
+            @media all and (max-width: 1149px) {
+              grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media all and (max-width: 599px) {
+              grid-template-columns: repeat(1, 1fr);
+              gap: 1rem;
+            }
   
             .item {
               position: relative;
