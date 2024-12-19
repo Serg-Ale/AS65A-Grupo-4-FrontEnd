@@ -23,7 +23,7 @@ const OrderItem = ({ nomeProduto, tipoMovimentacao, quantidade, participante, us
     <div className="item" onClick={ handleEditClick }>
       <div className="product">
         <h3>{ nomeProduto }</h3>
-        <div id="order-in" className="item-counter">
+        <div id={tipoMovimentacao === "entrada" ? "order-in" : "order-out"} className="item-counter">
           <div className="value">
             <strong>{ quantidade }</strong>
           </div>
