@@ -23,6 +23,7 @@ const LoginModal = ({ isOpen, onClose }) => {
     try {
       const { token } = await login({ nome: usuario, senha });
       saveToken(token); // Armazena o token no contexto e localStorage
+      localStorage.setItem("usuario", usuario);
 
       onClose(); // Fecha o modal após login bem-sucedido
       navigate("/dashboard/storage");

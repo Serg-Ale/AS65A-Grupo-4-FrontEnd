@@ -5,7 +5,7 @@ const About = () => {
         <div className="content">
           <div className="grid-separe">
             <div className="image">
-              <img src="/public/images/about.png" alt="Foto Sobre nós" />
+              <img src="/images/about.png" alt="Foto Sobre nós" />
             </div>
             <div className="info">
               <h2>Sobre nós</h2>

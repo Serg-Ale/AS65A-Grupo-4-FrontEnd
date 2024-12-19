@@ -27,7 +27,7 @@ const Footer = () => {
               </a>
             </nav>
             <div className="logo">
-              <img src="/public/images/logo.png" alt="" />
+              <img src="/images/logo.png" alt="" />
             </div>
           </div>
           <div className="bottom">

@@ -8,7 +8,7 @@ const Header = ({ setAction }) => {
           <a href="#main-nav" id="menu">
             <i className="fi fi-rr-menu-burger" src="" alt="" />
           </a>
-          <img src="../../public/images/logo-white.png" alt="logo do projeto" />
+          <img src="/images/logo-white.png" alt="logo do projeto" />
           <nav>
             <a href="#about">Sobre nós</a>
             <a href="#donate">Doe</a>
@@ -33,7 +33,7 @@ const Header = ({ setAction }) => {
             <i className="fi fi-rr-circle-xmark"></i>
           </a>
           <a href="/" className="logo">
-            <img src="../../public/images/favicon-white.png" alt="" />
+            <img src="/images/favicon-white.png" alt="" />
           </a>
           <nav>
             <a href="./">Sobre nós</a>

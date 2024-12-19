@@ -17,7 +17,7 @@ const StorageItem = ({ id_produto, nome, categoria, quantidade, fetchProducts })
         </div>
         <div className="image">
           <img
-            src="../../public/images/placeholder.png"
+            src="/images/placeholder.png"
             alt={ `Imagem do produto ${nome}` }
           />
         </div>
