@@ -1,9 +1,20 @@
+import { useNavigate } from "react-router-dom";
+import { useAuth } from '../api/AuthContext.jsx';
+
 const MainHeader = () => {
+  const { logout } = useAuth(); // Função de logout do contexto de autenticação
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout(); // Limpa o token e outros dados
+    navigate("/"); // Redireciona para a página inicial
+  };
+
   return (
     <header>
       <div className="content">
         <div className="logo">
-          <img src="/public/images/logo-white.png" alt="" />
+          <img src="/public/images/logo-white.png" alt="Logo" />
         </div>
         <div className="title">
           <h1>Dashboard</h1>
@@ -18,14 +29,16 @@ const MainHeader = () => {
             <div className="user-nav">
               <ul>
                 <li>
-                  <a href="https://api.whatsapp.com">
+                  <a
+                    href="https://api.whatsapp.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <span>Suporte</span> <i className="fi fi-rr-phone-flip"></i>
                   </a>
                 </li>
-                <li>
-                  <a href="">
-                    <span>Sair</span> <i className="fi fi-rr-exit"></i>
-                  </a>
+                <li onClick={handleLogout}>
+                  <span>Sair</span> <i className="fi fi-rr-exit"></i>
                 </li>
               </ul>
             </div>
