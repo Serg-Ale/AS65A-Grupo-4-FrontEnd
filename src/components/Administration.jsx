@@ -27,8 +27,6 @@ const Administration = () => {
   // Função para buscar participantes
   const fetchParticipants = async () => {
     const data = await fetchData("http://localhost:3001/participante");
-    console.log(data);
-
     if (data) {
       setParticipants(data);
     }
@@ -36,14 +34,13 @@ const Administration = () => {
     setLoading(false);
   };
 
+
   // Hook para executar as buscas quando o componente for montado
   useEffect(() => {
     fetchAdministrators();
     fetchParticipants();
   }, []);
 
-
-  participants.map((participant) => (console.log(participant)));
 
   return (
     <div className="grid-separe">

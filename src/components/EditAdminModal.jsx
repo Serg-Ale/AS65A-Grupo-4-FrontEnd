@@ -1,24 +1,38 @@
-import { updateData } from '../api/api.js';
-import PropTypes from 'prop-types';
+import { fetchData, updateData } from '../api/api.js';
+import PropTypes, { string } from 'prop-types';
 import useFormHandler from '../hooks/useFormHandler.js';
 import ReusableForm from './ReusableForm.jsx';
 import Modal from './Modal.jsx';
 
-const EditAdminModal = ({ isOpen, onClose, fetchAdministrators }) => {
-  const initialState = {
-    senhaAtual: "Senha atual",
-    novaSenha: "Nova senha"
-  };
+const EditAdminModal = ({ isOpen, onClose, nome, fetchAdministrators }) => {
+
+
+// const idHandler = async () => {
+//   const { id_usuario } = await fetchData(`http://localhost:3001/users/${nome}`);
+//   return id_usuario;
+// };
+
+// const id_usuario = idHandler();
+
+// const initialState = {
+//   id_usuario,
+//   senhaAtual: "",
+//   novaSenha: "",
+// };
 
   const { formData, handleInputChange, handleSubmit } = useFormHandler(
-    initialState,
+    { senhaAtual: "", novaSenha: "" },
     async (data) => {
-      console.log("Submitting form data:", data);
-      await updateData(`http://localhost:3001/change-password`, data);
+      const { id_usuario } = await fetchData(`http://localhost:3001/users/${nome}`);
+      const payload = { ...data, id_usuario };
+
+      console.log("Submitting form data:", payload);
+      await updateData("http://localhost:3001/change-password", payload);
       onClose();
       fetchAdministrators();
     }
   );
+
 
   const formConfig = [
     {
@@ -36,19 +50,20 @@ const EditAdminModal = ({ isOpen, onClose, fetchAdministrators }) => {
   ];
 
   return (
-    <Modal isOpen={ isOpen } onClose={ onClose }>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <ReusableForm
         title="Editar Admin"
-        formConfig={ formConfig }
-        formData={ formData }
-        handleInputChange={ handleInputChange }
-        handleSubmit={ handleSubmit }
+        formConfig={formConfig}
+        formData={formData}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
       />
     </Modal>
   );
 };
 
 EditAdminModal.propTypes = {
+  nome: string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   fetchAdministrators: PropTypes.func.isRequired,
