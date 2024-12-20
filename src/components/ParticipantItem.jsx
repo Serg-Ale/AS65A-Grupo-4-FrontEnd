@@ -29,6 +29,8 @@ const ParticipantItem = ({ id_participante, anonimo = false, nome, endereco, con
         <EditParticipantModal
           isOpen={action === "edit-participant-modal"}
           nome={nome}
+          endereco={endereco}
+          contato={contato}
           onClose={() => {
             console.log("Closing modal...");
             setAction("");

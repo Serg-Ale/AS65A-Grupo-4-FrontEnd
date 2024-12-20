@@ -5,29 +5,26 @@ import Modal from "./Modal.jsx";
 import ReusableForm from "./ReusableForm.jsx";
 
 
-const EditParticipantModal = ({ isOpen, onClose, fetchParticipants }) => {
+const EditParticipantModal = ({ isOpen, onClose, fetchParticipants, nome, endereco, contato }) => {
 
 
   const initialState = {
     anonimo: false, // Adiciona o estado inicial do checkbox
-    senhaAtual: "Senha atual",
-    novaSenha: "Nova senha",
+    nome,
+    endereco,
+    contato,
   };
 
   const { formData, handleInputChange, handleSubmit } = useFormHandler(
     initialState,
     async (data) => {
       console.log("Submitting form data:", data);
-      await updateData(`http://localhost:3001/participant/`, data);
+      await updateData(`http://localhost:3001/participante/${nome}`, data);
       onClose();
       fetchParticipants();
     }
   );
 
-  // Função para retornar a classe dinamicamente
-  // const getDynamicClass = () => {
-  //   return formData.anonimo ? "block-input" : ""; // Aplica 'block-input' apenas se anonimo estiver true
-  // };
 
   const formConfig = [
     {
@@ -37,24 +34,17 @@ const EditParticipantModal = ({ isOpen, onClose, fetchParticipants }) => {
       placeholder: "",
     },
     {
-      label: "Nome",
-      name: "nome",
-      type: "text",
-      placeholder: "Digite o nome...",
-      required: true,
-    },
-    {
       label: "Endereço",
       name: "endereco",
       type: "text",
-      placeholder: "Digite o endereço...",
+      placeholder: endereco,
       required: true,
     },
     {
       label: "Contato",
       name: "contato",
       type: "text",
-      placeholder: "Digite o número de contato...",
+      placeholder: contato,
       required: true,
     },
   ];
@@ -74,6 +64,9 @@ const EditParticipantModal = ({ isOpen, onClose, fetchParticipants }) => {
 };
 
 EditParticipantModal.propTypes = {
+  nome: PropTypes.string,
+  contato: PropTypes.string,
+  endereco: PropTypes.string,
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   fetchParticipants: PropTypes.func.isRequired,
