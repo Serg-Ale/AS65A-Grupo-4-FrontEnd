@@ -31,7 +31,9 @@ const AddOrderModal = ({ isOpen, onClose, fetchOrders }) => {
         nome_participante: data.nome_participante,
       };
 
-      console.log("Submitting form data:", payload);
+      if (payload.nome_participante === "Anônimo") {
+        payload.nome_participante = null;
+      }
 
       try {
         await createData("http://localhost:3001/movimentacoes", payload);
@@ -59,7 +61,8 @@ const AddOrderModal = ({ isOpen, onClose, fetchOrders }) => {
     const fetchParticipantes = async () => {
       const data = await fetchData("http://localhost:3001/participante");
       if (data) {
-        setParticipantes(data.map((participante) => participante.nome));
+        console.log(data);
+        setParticipantes(data.map((participante) => (participante.nome === null) ? "Anônimo" : participante.nome));
       }
       setLoading(false);
     };

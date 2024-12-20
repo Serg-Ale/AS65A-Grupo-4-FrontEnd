@@ -12,6 +12,10 @@ const Order = () => {
   const fetchOrders = async () => {
     const data = await fetchData("http://localhost:3001/movimentacoes");
 
+    data.map((order) => {
+      (order.Participante.nome === null) ? order.Participante.nome = "Anônimo" : order.nome;
+    });
+
     if (data) {
       setOrders(data);
     }
@@ -35,39 +39,39 @@ const Order = () => {
         <div
           id="modal-trigger"
           className="item create"
-          onClick={ (e) => {
+          onClick={(e) => {
             e.preventDefault();
             setAction("add-order-modal");
-          } }
+          }}
         >
           <h3>Adicionar Movimentação</h3>
           <i className="fi fi-rr-add"></i>
         </div>
         <AddOrderModal
-          isOpen={ action === "add-order-modal" }
-          onClose={ () => {
+          isOpen={action === "add-order-modal"}
+          onClose={() => {
             console.log("Closing modal...");
             setAction("");
-          } }
-          fetchOrders={ fetchOrders }
+          }}
+          fetchOrders={fetchOrders}
         />
 
-        { loading ? (
+        {loading ? (
           <p>Carregando...</p>
         ) : orders.length > 0 ? (
           orders.map((order) => (
             <OrderItem
-              key={ order.id_movimentacaoProduto }
-              nomeProduto={ order.Produto.nome }
-              tipoMovimentacao={ order.tipo_movimentacao }
-              quantidade={ order.quantidade }
-              participante={ order.Participante }
-              usuarioResponsavel={ order.Usuario.nome }
+              key={order.id_movimentacaoProduto}
+              nomeProduto={order.Produto.nome}
+              tipoMovimentacao={order.tipo_movimentacao}
+              quantidade={order.quantidade}
+              participante={order.Participante}
+              usuarioResponsavel={order.Usuario.nome}
             />
           ))
         ) : (
           <p>Nenhuma movimentação encontrada.</p>
-        ) }
+        )}
       </div>
     </div>
   );

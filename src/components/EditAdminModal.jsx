@@ -6,20 +6,6 @@ import Modal from './Modal.jsx';
 
 const EditAdminModal = ({ isOpen, onClose, nome, fetchAdministrators }) => {
 
-
-// const idHandler = async () => {
-//   const { id_usuario } = await fetchData(`http://localhost:3001/users/${nome}`);
-//   return id_usuario;
-// };
-
-// const id_usuario = idHandler();
-
-// const initialState = {
-//   id_usuario,
-//   senhaAtual: "",
-//   novaSenha: "",
-// };
-
   const { formData, handleInputChange, handleSubmit } = useFormHandler(
     { senhaAtual: "", novaSenha: "" },
     async (data) => {
